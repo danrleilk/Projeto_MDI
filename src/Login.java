@@ -56,7 +56,6 @@ public class Login extends javax.swing.JFrame {
         jTextField2.setName("Nome"); // NOI18N
 
         jButton1.setText("OK");
-        jButton1.setActionCommand("OK");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,8 +94,6 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addContainerGap(89, Short.MAX_VALUE))
         );
-
-        jButton1.getAccessibleContext().setAccessibleName("OK");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

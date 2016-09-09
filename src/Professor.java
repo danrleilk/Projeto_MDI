@@ -1,11 +1,11 @@
 
-public class Aluno {
+public class Professor {
 
     private String codigo;
     private String nome;
     private String senha;
 
-    public void get_data(String codigo, String nome, String senha) {
+    public void set_data(String codigo, String nome, String senha) {
         this.codigo = codigo;
         this.nome = nome;
         this.senha = senha;
