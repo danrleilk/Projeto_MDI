@@ -34,6 +34,8 @@ public class CadAluno extends javax.swing.JInternalFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
 
+        setClosable(true);
+
         jLabel3.setText("Senha");
 
         jLabel2.setText("Nome");
