@@ -105,7 +105,7 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String usuario = jTextField1.getText();
         
-        if (usuario.equals("nome")){
+        if (usuario.equals("Nome")){
           Menu p = new Menu();
         p.setVisible(true);  
         }
