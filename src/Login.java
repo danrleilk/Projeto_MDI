@@ -1,4 +1,5 @@
 
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /*
@@ -11,7 +12,7 @@ import javax.swing.JFrame;
  *
  * @author comp1
  */
-public class Login extends JFrame {
+public class Login extends JFrame{
 
     /**
      * Creates new form LoginFrame
