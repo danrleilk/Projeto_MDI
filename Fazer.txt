@@ -1,3 +1,0 @@
-Registrar o Login	(criar arquivo com nome de usuario)
-Criar arquivo de log ( File Writer )
-Tratar exceptions(Gerenciamento de eventos)

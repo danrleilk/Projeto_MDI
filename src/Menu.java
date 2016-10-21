@@ -1,5 +1,3 @@
-package com.sistema.janelas;
-
 
 import java.awt.PopupMenu;
 import javax.swing.JDesktopPane;
