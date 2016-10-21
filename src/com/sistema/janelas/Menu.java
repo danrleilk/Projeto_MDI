@@ -78,6 +78,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu4.add(jMenuItem1);
 
         jMenuItem2.setText("Novo Professor");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem2);
 
         jMenuItem3.setText("Novas Questoes");
@@ -113,13 +118,19 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        
-        CadAluno c = new CadAluno();
-         this.jDesktopPane1.add(c);
-         c.setVisible(true);
+        CadAluno ca = new CadAluno();
+         this.jDesktopPane1.add(ca);
+         ca.setVisible(true);
         
         
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+         CadProfessor cp = new CadProfessor();
+         this.jDesktopPane1.add(cp);
+         cp.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
