@@ -3,27 +3,64 @@ package com.sistema.bean;
 
 public class Professor {
 
-    private String cod_prof;
-    private String nome_prof;
-    private String senha_prof;
+    private String codProf;
+    private String nomeProf;
+    private String senhaProf;
+    private String email;
+    private String telefone;
+    private String especializacao;
 
-    public void set_data(String codigo, String nome, String senha) {
-        this.cod_prof = codigo;
-        this.nome_prof = nome;
-        this.senha_prof = senha;
+    public String getCodProf() {
+        return codProf;
     }
 
-    public String get_codigo() {
-        return cod_prof;
+    public void setCodProf(String codProf) {
+        this.codProf = codProf;
     }
 
-    public String get_nome() {
-        return nome_prof;
+    public String getNomeProf() {
+        return nomeProf;
     }
 
-    // dont think this function should really exist ? can somebody look here?
-    public String get_senha() {
-        return senha_prof;
+    public void setNomeProf(String nomeProf) {
+        this.nomeProf = nomeProf;
     }
+
+    public String getSenhaProf() {
+        return senhaProf;
+    }
+
+    public void setSenhaProf(String senhaProf) {
+        this.senhaProf = senhaProf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEspecializacao() {
+        return especializacao;
+    }
+
+    public void setEspecializacao(String especializacao) {
+        this.especializacao = especializacao;
+    }
+    
+    
+    
+   
+    
 
 }
