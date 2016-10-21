@@ -9,6 +9,7 @@ public class Professor {
     private String email;
     private String telefone;
     private String especializacao;
+    private String endereco;
 
     public String getCodProf() {
         return codProf;
@@ -57,10 +58,14 @@ public class Professor {
     public void setEspecializacao(String especializacao) {
         this.especializacao = especializacao;
     }
-    
-    
-    
-   
-    
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    
+    
 }
