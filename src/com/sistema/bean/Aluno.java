@@ -1,3 +1,5 @@
+package com.sistema.bean;
+
 
 public class Aluno {
 
