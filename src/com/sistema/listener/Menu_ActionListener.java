@@ -1,4 +1,7 @@
+package com.sistema.listener;
 
+
+import com.sistema.janelas.Menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,12 +15,15 @@ import java.awt.event.ActionListener;
  *
  * @author comp1
  */
-public class Aluno_ActionListener extends CadAluno implements ActionListener{
+public class Menu_ActionListener extends Menu implements ActionListener{
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
     
 }
