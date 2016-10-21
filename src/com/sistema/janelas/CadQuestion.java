@@ -15,6 +15,7 @@ public class CadQuestion extends javax.swing.JInternalFrame {
      * Creates new form CadQuestions
      */
     public CadQuestion() {
+        super("Cadastro de Questões");
         initComponents();
     }
 

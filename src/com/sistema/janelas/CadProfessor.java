@@ -5,7 +5,6 @@ package com.sistema.janelas;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author comp1
@@ -16,6 +15,7 @@ public class CadProfessor extends javax.swing.JInternalFrame {
      * Creates new form CadProfessor
      */
     public CadProfessor() {
+        super("Cadastro de Professores");
         initComponents();
     }
 

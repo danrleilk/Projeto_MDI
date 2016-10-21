@@ -1,33 +1,27 @@
 package com.sistema.janelas;
 
-
-import java.awt.PopupMenu;
-import javax.swing.JDesktopPane;
+import com.sistema.listener.MenuActionListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author comp1
  */
 public class Menu extends javax.swing.JFrame {
-    
-    
-    
+
+    private MenuActionListener listener = new MenuActionListener(this);
 
     /**
      * Creates new form Menu
      */
     public Menu() {
-        
+
         initComponents();
-        
-        
-        
+
     }
 
     /**
@@ -86,6 +80,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu4.add(jMenuItem2);
 
         jMenuItem3.setText("Novas Questoes");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem3);
 
         jMenuItem4.setText("Iniciar Quiz");
@@ -117,20 +116,25 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       
+
         CadAluno ca = new CadAluno();
-         this.jDesktopPane1.add(ca);
-         ca.setVisible(true);
-        
-        
-        
+        this.jDesktopPane1.add(ca);
+        ca.setVisible(true);
+
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-         CadProfessor cp = new CadProfessor();
-         this.jDesktopPane1.add(cp);
-         cp.setVisible(true);
+        CadProfessor cp = new CadProfessor();
+        this.jDesktopPane1.add(cp);
+        cp.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        CadQuestion cq = new CadQuestion();
+        this.jDesktopPane1.add(cq);
+        cq.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
