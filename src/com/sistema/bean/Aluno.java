@@ -1,15 +1,16 @@
 package com.sistema.bean;
 
-
 public class Aluno {
 
     private String codAluno;
     private String nomeAluno;
     private String senhaAluno;
+    private String sexo;
     private String dataNasc;
     private String responsavel;
     private String email;
     private String telefone;
+    private String endereco;
 
     public String getCodAluno() {
         return codAluno;
@@ -33,6 +34,14 @@ public class Aluno {
 
     public void setSenhaAluno(String senhaAluno) {
         this.senhaAluno = senhaAluno;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getDataNasc() {
@@ -67,6 +76,12 @@ public class Aluno {
         this.telefone = telefone;
     }
 
-    
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
 }
