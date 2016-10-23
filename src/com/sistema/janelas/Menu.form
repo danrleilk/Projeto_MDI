@@ -56,7 +56,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="bolinha"/>
+                <Property name="text" type="java.lang.String" value="sobre"/>
               </Properties>
             </MenuItem>
           </SubComponents>

@@ -1,6 +1,8 @@
 package com.sistema.bean;
 
-public class Aluno {
+import java.io.Serializable;
+
+public class Aluno implements Serializable {
 
     private String codAluno;
     private String nomeAluno;

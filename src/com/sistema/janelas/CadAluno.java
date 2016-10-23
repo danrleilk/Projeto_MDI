@@ -21,7 +21,7 @@ public class CadAluno extends javax.swing.JInternalFrame {
         aluno.setCodAluno(ccodigo.getText());
         aluno.setNomeAluno(cnome.getText());
         aluno.setSenhaAluno(csenha.getText());
-        aluno.setSexo(csexo.getActionCommand());
+        aluno.setSexo(csexo.getSelectedItem().toString());
         aluno.setResponsavel(cresponsavel.getText());
         aluno.setTelefone(ctelefone.getText());
         aluno.setEmail(cemail.getText());
