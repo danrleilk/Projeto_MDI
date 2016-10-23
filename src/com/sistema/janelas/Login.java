@@ -24,7 +24,8 @@ public class Login extends JFrame{
     public LoginDeclarations getLogin(){
         
         LoginDeclarations logindeclarations = new LoginDeclarations();
-        logindeclarations.getUsuario(Usuario.getText());
+        logindeclarations.setUsusario(Usuario.getText());
+        logindeclarations.getUsuario();
         
         return logindeclarations;
         
@@ -33,6 +34,7 @@ public class Login extends JFrame{
      * Creates new form LoginFrame
      */
     public Login() {
+        super("Login");
         initComponents();
     }
 
