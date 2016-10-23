@@ -1,8 +1,10 @@
 package com.sistema.janelas;
 
 
+import com.sistema.listener.LoginActionListener;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import com.sistema.bean.LoginDeclarations;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,6 +18,17 @@ import javax.swing.JFrame;
  */
 public class Login extends JFrame{
 
+    private LoginActionListener listener = new LoginActionListener();
+    
+    
+    public LoginDeclarations getLogin(){
+        
+        LoginDeclarations logindeclarations = new LoginDeclarations();
+        logindeclarations.getUsuario(Usuario.getText());
+        
+        return logindeclarations;
+        
+    }
     /**
      * Creates new form LoginFrame
      */
@@ -32,7 +45,7 @@ public class Login extends JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Codigo = new javax.swing.JTextField();
+        Usuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Senha = new javax.swing.JTextField();
@@ -43,15 +56,15 @@ public class Login extends JFrame{
         setResizable(false);
         setSize(new java.awt.Dimension(400, 300));
 
-        Codigo.setName("Codigo"); // NOI18N
-        Codigo.addActionListener(new java.awt.event.ActionListener() {
+        Usuario.setName("Usuario"); // NOI18N
+        Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CodigoActionPerformed(evt);
+                UsuarioActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Código:");
+        jLabel1.setText("Usuário");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Senha:");
@@ -64,6 +77,7 @@ public class Login extends JFrame{
                 LoginActionPerformed(evt);
             }
         });
+        Login.setActionCommand("entrar");
 
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,16 +102,16 @@ public class Login extends JFrame{
                         .addGap(18, 18, 18)
                         .addComponent(jButton1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Codigo)
+                        .addComponent(Usuario)
                         .addComponent(Senha, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -113,14 +127,12 @@ public class Login extends JFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoActionPerformed
+    private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CodigoActionPerformed
+    }//GEN-LAST:event_UsuarioActionPerformed
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-        // TODO add your handling code here:
-        
-        
+       
         Menu m = new Menu();
         
         m.setVisible(true);
@@ -172,9 +184,9 @@ public class Login extends JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Codigo;
     private javax.swing.JButton Login;
     private javax.swing.JTextField Senha;
+    private javax.swing.JTextField Usuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
