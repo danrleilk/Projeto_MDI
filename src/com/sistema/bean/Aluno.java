@@ -1,6 +1,5 @@
 package com.sistema.bean;
 
-
 public class Aluno {
 
     private String codAluno;
@@ -10,6 +9,7 @@ public class Aluno {
     private String responsavel;
     private String email;
     private String telefone;
+    private String endereco;
 
     public String getCodAluno() {
         return codAluno;
@@ -67,6 +67,12 @@ public class Aluno {
         this.telefone = telefone;
     }
 
-    
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
 }

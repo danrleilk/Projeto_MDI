@@ -1,7 +1,5 @@
 package com.sistema.janelas;
 
-import com.sistema.listener.MenuActionListener;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,8 +10,6 @@ import com.sistema.listener.MenuActionListener;
  * @author comp1
  */
 public class Menu extends javax.swing.JFrame {
-
-    private MenuActionListener listener = new MenuActionListener(this);
 
     /**
      * Creates new form Menu

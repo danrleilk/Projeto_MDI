@@ -7,11 +7,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 
-public class LoginActionListener extends Login implements ActionListener{
+public class ProfessorActionListener extends Login implements ActionListener{
     
-    private JButton Login = new JButton("Login");
+
     
-    public LoginActionListener(){
+    public ProfessorActionListener(){
         
        
         
