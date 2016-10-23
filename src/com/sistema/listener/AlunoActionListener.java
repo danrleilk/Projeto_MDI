@@ -19,7 +19,10 @@ public class AlunoActionListener implements ActionListener {
             //salvar
             Aluno aluno = frame.getAluno();
 
+        } else if ("Cancelar".equals(e.getActionCommand())) {
+            //como limpar os campos?
         }
+
     }
 
 }

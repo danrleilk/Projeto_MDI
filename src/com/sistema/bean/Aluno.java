@@ -5,6 +5,7 @@ public class Aluno {
     private String codAluno;
     private String nomeAluno;
     private String senhaAluno;
+    private String sexo;
     private String dataNasc;
     private String responsavel;
     private String email;
@@ -33,6 +34,14 @@ public class Aluno {
 
     public void setSenhaAluno(String senhaAluno) {
         this.senhaAluno = senhaAluno;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getDataNasc() {
