@@ -4,9 +4,11 @@ import com.sistema.bean.Aluno;
 import com.sistema.janelas.CadAluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,16 +31,21 @@ public class AlunoActionListener implements ActionListener {
         }
     }
 
-    public void read() throws FileNotFoundException {
-        
-        Aluno aluno = frame.getAluno();
-        FileOutputStream fos = new FileOutputStream("arquivo");
-        ObjectOutputStream oos = null;
-        try {
-            oos = new ObjectOutputStream(fos);
-        } catch (IOException ex) {
-            Logger.getLogger(AlunoActionListener.class.getName()).log(Level.SEVERE, null, ex);
+    public void read() throws FileNotFoundException, IOException, ClassNotFoundException {
+
+        try (FileInputStream fis = new FileInputStream("data.ser")) {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Object aluno = ois.readObject();
         }
+    }
+
+    public void write() throws FileNotFoundException, IOException {
+
+        Aluno aluno = frame.getAluno();
+
+        FileOutputStream fos = new FileOutputStream("data.ser");
+        ObjectOutputStream oos = null;
+        oos = new ObjectOutputStream(fos);
         oos.writeObject(aluno);
         oos.flush();
         oos.close();
