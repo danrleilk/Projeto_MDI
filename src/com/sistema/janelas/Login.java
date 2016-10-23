@@ -18,7 +18,7 @@ import com.sistema.bean.LoginDeclarations;
  */
 public class Login extends JFrame{
 
-    private LoginActionListener listener = new LoginActionListener();
+    private LoginActionListener listener = new LoginActionListener(this);
     
     
     public LoginDeclarations getLogin(){
