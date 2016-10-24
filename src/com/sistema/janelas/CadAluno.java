@@ -2,6 +2,7 @@ package com.sistema.janelas;
 
 import com.sistema.bean.Aluno;
 import com.sistema.listener.AlunoActionListener;
+import javax.swing.JInternalFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,7 +13,7 @@ import com.sistema.listener.AlunoActionListener;
  *
  * @author comp1
  */
-public class CadAluno extends javax.swing.JInternalFrame {
+public class CadAluno extends JInternalFrame {
 
     private AlunoActionListener listener = new AlunoActionListener(this);
 

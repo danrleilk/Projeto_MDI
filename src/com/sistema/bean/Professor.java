@@ -1,11 +1,13 @@
 package com.sistema.bean;
 
+import java.io.Serializable;
 
-public class Professor {
+public class Professor implements Serializable{
 
     private String codProf;
     private String nomeProf;
     private String senhaProf;
+    private String sexo;
     private String email;
     private String telefone;
     private String especializacao;
@@ -33,6 +35,14 @@ public class Professor {
 
     public void setSenhaProf(String senhaProf) {
         this.senhaProf = senhaProf;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getEmail() {
@@ -66,6 +76,5 @@ public class Professor {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    
-    
+
 }
