@@ -10,8 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class AlunoActionListener implements ActionListener {
 
@@ -27,10 +25,14 @@ public class AlunoActionListener implements ActionListener {
             //salvar
             Aluno aluno = frame.getAluno();
         } else if ("Cancelar".equals(e.getActionCommand())) {
-            //como limpar os campos?
+            //como limpar os campos? ou deveriamos fechar a janela? wtdh?
         }
     }
-
+    /*
+    public static void main (String args[]){
+        System.out.println("nome"+ Aluno.class.getName());
+    }*/
+    
     public void read() throws FileNotFoundException, IOException, ClassNotFoundException {
 
         try (FileInputStream fis = new FileInputStream("data.ser")) {
