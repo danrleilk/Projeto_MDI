@@ -35,19 +35,27 @@
                   <Component id="jLabel8" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="csexo" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="ctelefone" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="cemail" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="cespec" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="cendereco" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="csenha" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="cnome" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="cDataNasc" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="ccodigo" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="53" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="csexo" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="ctelefone" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="cemail" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="cespec" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="cendereco" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="cnome" linkSize="5" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="cDataNasc" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="ccodigo" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="csenha" linkSize="5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
@@ -69,12 +77,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="jLabel2" linkSize="4" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="cnome" alignment="2" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="cnome" linkSize="6" alignment="2" min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="csenha" linkSize="6" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" linkSize="4" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="csenha" alignment="2" min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
@@ -111,7 +119,7 @@
                   <Component id="jButton2" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -162,8 +170,6 @@
         <Property name="text" type="java.lang.String" value="Data Nasc.:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="csenha">
-    </Component>
     <Component class="javax.swing.JTextField" name="cnome">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cnomeActionPerformed"/>
@@ -212,6 +218,8 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton1.addActionListener(listener);&#xa;jButton1.setActionCommand(&quot;cancelar&quot;);"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="csenha">
     </Component>
   </SubComponents>
 </Form>

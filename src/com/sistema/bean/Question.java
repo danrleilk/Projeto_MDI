@@ -1,6 +1,5 @@
 package com.sistema.bean;
 
-
 public class Question {
 
     private String enunciado;
@@ -37,6 +36,4 @@ public class Question {
         return d;
     }
 
-    
-    
 }

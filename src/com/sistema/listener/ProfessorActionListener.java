@@ -7,18 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
+public class ProfessorActionListener extends Login implements ActionListener {
 
-public class ProfessorActionListener extends Login implements ActionListener{
-    
-
-    
-   private CadProfessor frame;
+    private CadProfessor frame;
 
     public ProfessorActionListener(CadProfessor frame) {
         this.frame = frame;
     }
-    
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if ("Cadastrar".equals(e.getActionCommand())) {
@@ -28,8 +24,6 @@ public class ProfessorActionListener extends Login implements ActionListener{
             //como limpar os campos?
         }
     }
-    
+
     //Fazer o trem de salvar em txt nesse arquivo tbm
-    
-    
 }

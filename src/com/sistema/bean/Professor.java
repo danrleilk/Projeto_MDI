@@ -2,7 +2,7 @@ package com.sistema.bean;
 
 import java.io.Serializable;
 
-public class Professor implements Serializable{
+public class Professor implements Serializable {
 
     private String codProf;
     private String nomeProf;

@@ -16,10 +16,11 @@ public class LoginActionListener implements ActionListener {
 
     public LoginActionListener(Login frame) {
         this.frame = frame;
-    } 
+    }
+
     public static void escrever(String mensagem, String logFile) throws IOException {
-                //O segundo parametro "true" indica append para o arquivo em questao.
-                FileWriter fileWriter = new FileWriter(logFile, true);
+        //O segundo parametro "true" indica append para o arquivo em questao.
+        FileWriter fileWriter = new FileWriter(logFile, true);
         try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             String data = (new java.util.Date()).toString();
             String msg = data + " : " + mensagem + "\n";
@@ -31,18 +32,19 @@ public class LoginActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-                escrever("Efetuou Login!", "log.txt");
-            } catch (IOException ex) {
-                ex.printStackTrace();            }
-        
+            escrever("Efetuou Login!", "log.txt");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
         if ("entrar".equals(e.getActionCommand())) {
             //salvar
             LoginDeclarations login = frame.getLogin();
-            
-        }else if ("Cancelar".equals(e.getActionCommand())) {
+
+        } else if ("Cancelar".equals(e.getActionCommand())) {
             frame.dispose();
             //como limpar os campos?
         }
     }
-    
+
 }
