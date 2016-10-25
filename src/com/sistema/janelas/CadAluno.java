@@ -3,6 +3,7 @@ package com.sistema.janelas;
 import com.sistema.bean.Aluno;
 import com.sistema.listener.AlunoActionListener;
 import javax.swing.JInternalFrame;
+import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -250,6 +251,10 @@ public class CadAluno extends JInternalFrame {
         aluno.setEmail(cemail.getText());
         aluno.setEndereco(cendereco.getText());
         return aluno;
+    }
+
+    public JTextField getNome() {
+        return cnome;
     }
 
 }
