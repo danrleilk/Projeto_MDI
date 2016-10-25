@@ -108,7 +108,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="Login.setActionCommand(&quot;entrar&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="Login.setActionCommand(&quot;Entrar&quot;);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">

@@ -4,6 +4,7 @@ import com.sistema.listener.LoginActionListener;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import com.sistema.bean.LoginDeclarations;
+import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,15 +19,9 @@ public class Login extends JFrame {
 
     private LoginActionListener listener = new LoginActionListener(this);
 
-    public LoginDeclarations getLogin() {
+    
 
-        LoginDeclarations login = new LoginDeclarations();
-        login.setUsusario(Usuario.getText());
-        login.getUsuario();
-
-        return login;
-
-    }
+    
 
     /**
      * Creates new form LoginFrame
@@ -75,7 +70,7 @@ public class Login extends JFrame {
                 LoginActionPerformed(evt);
             }
         });
-        Login.setActionCommand("entrar");
+        Login.setActionCommand("Entrar");
 
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -140,11 +135,11 @@ public class Login extends JFrame {
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
 
-        Menu m = new Menu();
+       // Menu m = new Menu();
 
-        m.setVisible(true);
+      //  m.setVisible(true);
 
-        dispose();
+      //  dispose();
 
     }//GEN-LAST:event_LoginActionPerformed
 
@@ -198,4 +193,17 @@ public class Login extends JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
+
+    //public LoginDeclarations getLogin() {
+
+      //  LoginDeclarations login = new LoginDeclarations();
+      // login.setUsusario(Usuario.getText());
+     //   login.getUsuario();
+
+     //   return login;
+    
+    public JTextField getTextoTextField() {
+        return Usuario;
+    }
+
 }
