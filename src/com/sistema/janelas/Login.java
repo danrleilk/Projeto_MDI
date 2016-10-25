@@ -19,10 +19,6 @@ public class Login extends JFrame {
 
     private LoginActionListener listener = new LoginActionListener(this);
 
-    
-
-    
-
     /**
      * Creates new form LoginFrame
      */
@@ -65,13 +61,15 @@ public class Login extends JFrame {
         jLabel2.setText("Senha:");
 
         Login.setText("Entrar");
+        Login.addActionListener(listener);
+        Login.setActionCommand("entrar");
         Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginActionPerformed(evt);
             }
         });
-        Login.setActionCommand("Entrar");
 
+        jButton1.setText("Cancelar");
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +77,7 @@ public class Login extends JFrame {
             }
         });
 
-        jPasswordField1.setText("jPasswordField1");
+        jButton1.setActionCommand("cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
