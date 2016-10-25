@@ -22,11 +22,10 @@ public class AlunoActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Aluno aluno = frame.getAluno();
-        if ("Cadastrar".equals(e.getActionCommand())) {
+        if ("cadastrar".equals(e.getActionCommand())) {
             //salvar
-            JOptionPane.showMessageDialog(null, "Dados Cadastrados." + Aluno.class.getName());
-        } else if ("Cancelar".equals(e.getActionCommand())) {
+            JOptionPane.showMessageDialog(null, "Dados Cadastrados." + frame.getNome().getText());
+        } else if ("cancelar".equals(e.getActionCommand())) {
             //como limpar os campos? ou deveriamos fechar a janela? wtdh?
             JOptionPane.showMessageDialog(null, "Clicou no Cancelar");
             frame.dispose();
@@ -37,7 +36,7 @@ public class AlunoActionListener implements ActionListener {
     public static void main (String args[]){
         System.out.println("nome"+ Aluno.class.getName());
     }*/
-
+ /*
     public void read() throws FileNotFoundException, IOException, ClassNotFoundException {
 
         try (FileInputStream fis = new FileInputStream("data.ser")) {
@@ -57,5 +56,5 @@ public class AlunoActionListener implements ActionListener {
         oos.flush();
         oos.close();
     }
-
+     */
 }
