@@ -239,6 +239,8 @@ public class CadAluno extends JInternalFrame {
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 
+    
+    
     public Aluno getAluno() {
         Aluno aluno = new Aluno();
         aluno.setCodAluno(ccodigo.getText());
