@@ -4,7 +4,7 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[340, 360]"/>
+      <Dimension value="[340, 400]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -42,7 +42,14 @@
                       </Group>
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="ctelefone" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="cemail" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="cresponsavel" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="cendereco" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="cDataNasc" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
                           <Component id="cnome" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="ccodigo" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="csexo" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
                           <Component id="csenha" linkSize="2" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -51,18 +58,6 @@
                       <Component id="jButton1" linkSize="5" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton2" linkSize="5" min="-2" pref="100" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="2" attributes="0">
-                      <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ccodigo" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cDataNasc" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cendereco" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cresponsavel" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cemail" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="ctelefone" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="csexo" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -152,9 +147,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cnome">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cnomeActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -162,9 +154,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ccodigo">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ccodigoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="csexo">
       <Properties>
@@ -219,13 +208,10 @@
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton1.addActionListener(listener);&#xa;jButton1.setActionCommand(&quot;cancelar&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton2.addActionListener(listener);&#xa;jButton2.setActionCommand(&quot;cancelar&quot;);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JPasswordField" name="csenha">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="csenhaActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

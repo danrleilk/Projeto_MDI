@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
 
 public class AlunoActionListener implements ActionListener {
 
@@ -21,18 +22,22 @@ public class AlunoActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Aluno aluno = frame.getAluno();
         if ("Cadastrar".equals(e.getActionCommand())) {
             //salvar
-            Aluno aluno = frame.getAluno();
+            JOptionPane.showMessageDialog(null, "Dados Cadastrados." + Aluno.class.getName());
         } else if ("Cancelar".equals(e.getActionCommand())) {
             //como limpar os campos? ou deveriamos fechar a janela? wtdh?
+            JOptionPane.showMessageDialog(null, "Clicou no Cancelar");
+            frame.dispose();
         }
     }
+
     /*
     public static void main (String args[]){
         System.out.println("nome"+ Aluno.class.getName());
     }*/
-    
+
     public void read() throws FileNotFoundException, IOException, ClassNotFoundException {
 
         try (FileInputStream fis = new FileInputStream("data.ser")) {

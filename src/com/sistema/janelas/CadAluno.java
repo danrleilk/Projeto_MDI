@@ -17,19 +17,6 @@ public class CadAluno extends JInternalFrame {
 
     private AlunoActionListener listener = new AlunoActionListener(this);
 
-    public Aluno getAluno() {
-        Aluno aluno = new Aluno();
-        aluno.setCodAluno(ccodigo.getText());
-        aluno.setNomeAluno(cnome.getText());
-        aluno.setSenhaAluno(csenha.getText());
-        aluno.setSexo(csexo.getSelectedItem().toString());
-        aluno.setResponsavel(cresponsavel.getText());
-        aluno.setTelefone(ctelefone.getText());
-        aluno.setEmail(cemail.getText());
-        aluno.setEndereco(cendereco.getText());
-        return aluno;
-    }
-
     /**
      * Creates new form NovoJInternalFrame
      */
@@ -69,7 +56,7 @@ public class CadAluno extends JInternalFrame {
         csenha = new javax.swing.JPasswordField();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(340, 360));
+        setPreferredSize(new java.awt.Dimension(340, 400));
 
         jLabel3.setText("Senha:");
 
@@ -81,19 +68,7 @@ public class CadAluno extends JInternalFrame {
 
         jLabel1.setText("Código:");
 
-        cnome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnomeActionPerformed(evt);
-            }
-        });
-
         jLabel8.setText("Sexo:");
-
-        ccodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ccodigoActionPerformed(evt);
-            }
-        });
 
         csexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maculino", "Feminino" }));
 
@@ -108,14 +83,8 @@ public class CadAluno extends JInternalFrame {
         jLabel9.setText("Data Nasc.:");
 
         jButton2.setText("Cancelar");
-        jButton1.addActionListener(listener);
-        jButton1.setActionCommand("cancelar");
-
-        csenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                csenhaActionPerformed(evt);
-            }
-        });
+        jButton2.addActionListener(listener);
+        jButton2.setActionCommand("cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,23 +106,20 @@ public class CadAluno extends JInternalFrame {
                             .addComponent(jLabel9))
                         .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(ctelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cemail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cresponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cendereco, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cnome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ccodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(csexo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(csenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ccodigo, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cDataNasc, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cendereco, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cresponsavel, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cemail, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ctelefone, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(csexo, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -218,17 +184,37 @@ public class CadAluno extends JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cnomeActionPerformed
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CadAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CadAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CadAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CadAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
-    private void ccodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ccodigoActionPerformed
-
-    private void csenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_csenhaActionPerformed
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CadAluno().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cDataNasc;
@@ -252,4 +238,18 @@ public class CadAluno extends JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
+
+    public Aluno getAluno() {
+        Aluno aluno = new Aluno();
+        aluno.setCodAluno(ccodigo.getText());
+        aluno.setNomeAluno(cnome.getText());
+        aluno.setSenhaAluno(csenha.getPassword().toString());
+        aluno.setSexo(csexo.getSelectedItem().toString());
+        aluno.setResponsavel(cresponsavel.getText());
+        aluno.setTelefone(ctelefone.getText());
+        aluno.setEmail(cemail.getText());
+        aluno.setEndereco(cendereco.getText());
+        return aluno;
+    }
+
 }
