@@ -71,13 +71,13 @@ public class Login extends JFrame {
 
         jButton1.setText("Cancelar");
         jButton1.setText("Cancelar");
+        jButton1.addActionListener(listener);
+        jButton1.setActionCommand("cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jButton1.setActionCommand("cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,11 +133,11 @@ public class Login extends JFrame {
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
 
-       // Menu m = new Menu();
+       Menu m = new Menu();
 
-      //  m.setVisible(true);
+       m.setVisible(true);
 
-      //  dispose();
+       dispose();
 
     }//GEN-LAST:event_LoginActionPerformed
 

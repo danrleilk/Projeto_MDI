@@ -27,7 +27,8 @@ public class LoginActionListener implements ActionListener {
             JOptionPane.showMessageDialog(null, "Clicou no OK: " + frame.getTextoTextField().getText());
 
         } else if ("cancelar".equals(e.getActionCommand())) {
-            frame.dispose();
+            JOptionPane.showMessageDialog(null, "O " + frame.getTextoTextField().getText() + " clicou no Cancelar: ");
+            //frame.dispose();
             //como limpar os campos?
         }
     }

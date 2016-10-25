@@ -119,8 +119,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="jButton1.setActionCommand(&quot;cancelar&quot;);"/>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton1.setText(&quot;Cancelar&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton1.setText(&quot;Cancelar&quot;);&#xa;jButton1.addActionListener(listener);&#xa;jButton1.setActionCommand(&quot;cancelar&quot;);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField1">
