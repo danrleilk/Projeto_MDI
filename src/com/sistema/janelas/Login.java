@@ -1,9 +1,11 @@
 package com.sistema.janelas;
 
 import com.sistema.listener.LoginActionListener;
-import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import javax.swing.JFrame;
-import com.sistema.bean.LoginDeclarations;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JTextField;
 
 /*
@@ -48,11 +50,16 @@ public class Login extends JFrame {
         setSize(new java.awt.Dimension(400, 300));
 
         Usuario.setName("Usuario"); // NOI18N
-        Usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuarioActionPerformed(evt);
+        File arquivo = new File("teste.txt");
+        try (FileReader fr = new FileReader(arquivo)) {
+            BufferedReader br = new BufferedReader(fr);
+            String content;
+            while ((content = br.readLine()) != null) {
+                Usuario.setText(content);
             }
-        });
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Usuário");
@@ -127,18 +134,10 @@ public class Login extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsuarioActionPerformed
-
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-
-       Menu m = new Menu();
-
-       m.setVisible(true);
-
-       dispose();
-
+        Menu m = new Menu();
+        m.setVisible(true);
+        dispose();
     }//GEN-LAST:event_LoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -162,13 +161,20 @@ public class Login extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -193,13 +199,11 @@ public class Login extends JFrame {
     // End of variables declaration//GEN-END:variables
 
     //public LoginDeclarations getLogin() {
-
-      //  LoginDeclarations login = new LoginDeclarations();
-      // login.setUsusario(Usuario.getText());
-     //   login.getUsuario();
-
-     //   return login;
-    
+    // NOT REALLY NEEDED ANYMORE !!!!!!!!
+    //  LoginDeclarations login = new LoginDeclarations();
+    // login.setUsusario(Usuario.getText());
+    //   login.getUsuario();
+    //   return login;
     public JTextField getTextoTextField() {
         return Usuario;
     }
