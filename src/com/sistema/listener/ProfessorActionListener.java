@@ -20,7 +20,7 @@ public class ProfessorActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if ("cadastrar".equals(e.getActionCommand())) {
             try{
-            Log.escrever("Cadastrou Professor"+ "\n");
+            Log.escrever("Cadastrou Professor ");
             Gravar.escrever("Professor.txt", frame.getProf().getNomeProf().toString());
                         
             frame.dispose();

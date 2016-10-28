@@ -31,7 +31,7 @@ public class AlunoActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if ("cadastrar".equals(e.getActionCommand())) {
             try{
-            Log.escrever("Cadastrou Aluno\n\n ");
+            Log.escrever("Cadastrou Aluno ");
             frame.dispose();
             } catch(IOException ex){
                 ex.printStackTrace();
