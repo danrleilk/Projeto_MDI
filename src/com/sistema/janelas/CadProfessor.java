@@ -18,7 +18,7 @@ public class CadProfessor extends JInternalFrame {
     private ProfessorActionListener listener = new ProfessorActionListener(this);
 
     //private AlunoActionListener listener = new AlunoActionListener(this);
-  /*  public Professor getProf() {
+   public Professor getProf() {
         Professor prof = new Professor();
         prof.setCodProf(ccodigo.getText());
         prof.setNomeProf(cnome.getText());
@@ -30,7 +30,7 @@ public class CadProfessor extends JInternalFrame {
         prof.setEndereco(cendereco.getText());
         return prof;
     }
-*/
+
     public CadProfessor() {
         super("Cadastro de Professores");
         initComponents();

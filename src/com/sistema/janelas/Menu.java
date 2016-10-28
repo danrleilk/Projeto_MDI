@@ -1,5 +1,8 @@
 package com.sistema.janelas;
 
+import com.sistema.listener.Log;
+import java.io.IOException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -123,6 +126,11 @@ public class Menu extends javax.swing.JFrame {
         CadAluno ca = new CadAluno();
         this.jDesktopPane1.add(ca);
         ca.setVisible(true);
+        try{
+        Log.escrever("Abriu cadastro Aluno!");
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

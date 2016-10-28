@@ -25,6 +25,8 @@ public class LoginActionListener implements ActionListener {
             try (FileWriter fw = new FileWriter(arquivo)) {
                 fw.write(frame.getTextoTextField().getText());
                 fw.flush();
+                String mensagem = frame.getTextoTextField().getText();
+                Log.escrever(frame.getTextoTextField().getText() + " logou no Sistema!");
                 
             } catch (IOException ex) {
                 ex.printStackTrace();
