@@ -98,7 +98,7 @@ public class CadProfessor extends JInternalFrame {
             }
         });
 
-        csexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maculino", "Feminino" }));
+        csexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(listener);

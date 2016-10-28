@@ -81,7 +81,7 @@
         <Property name="name" type="java.lang.String" value="Usuario" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="File arquivo = new File(&quot;teste.txt&quot;);&#xa;try (FileReader fr = new FileReader(arquivo)) {&#xa;BufferedReader br = new BufferedReader(fr);&#xa;String content;&#xa;while ((content = br.readLine()) != null) {&#xa;    Usuario.setText(content);&#xa;    }&#xa;} catch (IOException ex) {&#xa;    ex.printStackTrace();&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="File arquivo = new File(&quot;usuario.txt&quot;);&#xa;try (FileReader fr = new FileReader(arquivo)) {&#xa;BufferedReader br = new BufferedReader(fr);&#xa;String content;&#xa;while ((content = br.readLine()) != null) {&#xa;    Usuario.setText(content);&#xa;    }&#xa;} catch (IOException ex) {&#xa;    ex.printStackTrace();&#xa;}"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

@@ -21,18 +21,17 @@ public class LoginActionListener implements ActionListener {
         if ("entrar".equals(e.getActionCommand())) {
             //salvar
 
-            File arquivo = new File("teste.txt");
+            File arquivo = new File("usuario.txt");
             try (FileWriter fw = new FileWriter(arquivo)) {
                 fw.write(frame.getTextoTextField().getText());
                 fw.flush();
+                
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
 
-            JOptionPane.showMessageDialog(null, "Clicou no OK: " + frame.getTextoTextField().getText());
-
         } else if ("cancelar".equals(e.getActionCommand())) {
-            JOptionPane.showMessageDialog(null, "O " + frame.getTextoTextField().getText() + " clicou no Cancelar: ");
+            
             frame.dispose();
         }
     }

@@ -50,7 +50,7 @@ public class Login extends JFrame {
         setSize(new java.awt.Dimension(400, 300));
 
         Usuario.setName("Usuario"); // NOI18N
-        File arquivo = new File("teste.txt");
+        File arquivo = new File("usuario.txt");
         try (FileReader fr = new FileReader(arquivo)) {
             BufferedReader br = new BufferedReader(fr);
             String content;

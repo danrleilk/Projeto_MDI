@@ -5,9 +5,10 @@ import com.sistema.janelas.CadProfessor;
 import com.sistema.janelas.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JButton;
 
-public class ProfessorActionListener extends Login implements ActionListener {
+public class ProfessorActionListener implements ActionListener {
 
     private CadProfessor frame;
 
@@ -17,11 +18,16 @@ public class ProfessorActionListener extends Login implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if ("Cadastrar".equals(e.getActionCommand())) {
-            //salvar
-            Professor prof = frame.getProf();
-        } else if ("Cancelar".equals(e.getActionCommand())) {
+        if ("cadastrar".equals(e.getActionCommand())) {
+            try{
+            Log.escrever("Cadastrou Professor ");
+            frame.dispose();
+            } catch(IOException ex){
+                ex.printStackTrace();
+            }
+        } else if ("cancelar".equals(e.getActionCommand())) {
             //como limpar os campos?
+            frame.dispose();
         }
     }
 

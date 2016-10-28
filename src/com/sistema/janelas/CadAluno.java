@@ -73,7 +73,7 @@ public class CadAluno extends JInternalFrame {
 
         jLabel8.setText("Sexo:");
 
-        csexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maculino", "Feminino" }));
+        csexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
         jLabel4.setText("E-mail:");
 
