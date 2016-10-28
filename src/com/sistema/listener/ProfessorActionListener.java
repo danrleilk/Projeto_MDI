@@ -10,7 +10,7 @@ import javax.swing.JButton;
 
 public class ProfessorActionListener implements ActionListener {
 
-    private CadProfessor frame;
+    private final CadProfessor frame;
 
     public ProfessorActionListener(CadProfessor frame) {
         this.frame = frame;

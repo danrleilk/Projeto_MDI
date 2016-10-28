@@ -216,7 +216,7 @@
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton1.addActionListener(listener);&#xa;jButton1.setActionCommand(&quot;cancelar&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton2.addActionListener(listener);&#xa;jButton2.setActionCommand(&quot;cancelar&quot;);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JPasswordField" name="csenha">

@@ -27,8 +27,6 @@ public class AlunoActionListener implements ActionListener {
         this.frame = frame;
     }
     
-    
-    
     @Override
     public void actionPerformed(ActionEvent e) {
         if ("cadastrar".equals(e.getActionCommand())) {
