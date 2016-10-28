@@ -259,9 +259,10 @@ public class CadAluno extends JInternalFrame {
     public JTextField getNome() {   return cnome;   }
     public JPasswordField getSenha() {   return csenha;  }
     public JComboBox getSexo(){ return csexo;   }
+    public JTextField getDataNasc(){ return cDataNasc;  }
     public JTextField getResp(){ return cresponsavel;   }
     public JTextField getTelefone(){    return ctelefone;   }
     public JTextField getEmail(){   return cemail;  }
-    public JTextField getEnd(){ return cendereco;   }
+    public JTextField getEnder(){ return cendereco;   }
 
 }

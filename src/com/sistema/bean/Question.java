@@ -3,17 +3,18 @@ package com.sistema.bean;
 public class Question {
 
     private String enunciado;
-    private String a, b, c, d;
+    private String a, b, c, d, resp;
 
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
     }
 
-    public void setOpcoes(String a, String b, String c, String d) {
+    public void setOpcoes(String a, String b, String c, String d, String resp) {
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
+        this.resp = resp;
     }
 
     public String getEnunciado() {
@@ -34,6 +35,14 @@ public class Question {
 
     public String getD() {
         return d;
+    }
+
+    public String getResp() {
+        return resp;
+    }
+
+    public void setResp(String resp) {
+        this.resp = resp;
     }
 
 }

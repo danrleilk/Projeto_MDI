@@ -1,5 +1,6 @@
 package com.sistema.bean;
 
+import com.sistema.listener.AlunoActionListener;
 import java.io.Serializable;
 
 public class Aluno implements Serializable {
@@ -13,6 +14,14 @@ public class Aluno implements Serializable {
     private String email;
     private String telefone;
     private String endereco;
+
+    public Aluno(AlunoActionListener aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Aluno() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public String getCodAluno() {
         return codAluno;
