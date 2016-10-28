@@ -12,6 +12,15 @@ public class Professor implements Serializable {
     private String telefone;
     private String especializacao;
     private String endereco;
+    private String datanasc;
+
+    public String getDatanasc() {
+        return datanasc;
+    }
+
+    public void setDatanasc(String datanasc) {
+        this.datanasc = datanasc;
+    }
 
     public String getCodProf() {
         return codProf;

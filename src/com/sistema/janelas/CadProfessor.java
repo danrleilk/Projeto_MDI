@@ -2,6 +2,7 @@ package com.sistema.janelas;
 
 import com.sistema.bean.Professor;
 import com.sistema.listener.ProfessorActionListener;
+import java.util.Arrays;
 import javax.swing.JInternalFrame;
 
 /*
@@ -22,12 +23,13 @@ public class CadProfessor extends JInternalFrame {
         Professor prof = new Professor();
         prof.setCodProf(ccodigo.getText());
         prof.setNomeProf(cnome.getText());
-        prof.setSenhaProf(csenha.getPassword().toString());
+        prof.setSenhaProf(Arrays.toString(csenha.getPassword()));
         prof.setSexo(csexo.getSelectedItem().toString());
         prof.setEspecializacao(cespec.getText());
         prof.setTelefone(ctelefone.getText());
         prof.setEmail(cemail.getText());
         prof.setEndereco(cendereco.getText());
+        prof.setDatanasc(cDataNasc.getText());
         return prof;
     }
 

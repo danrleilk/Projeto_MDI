@@ -12,7 +12,7 @@ public class Gravar {
         FileWriter fileWriter = new FileWriter(LogFile, true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         //String data = (new java.util.Date()).toString();
-        String msg = " : " + mensagem + "\n";
+        String msg =  mensagem + " ; \n";
         bufferedWriter.write(msg);
         bufferedWriter.flush();
         bufferedWriter.close();
