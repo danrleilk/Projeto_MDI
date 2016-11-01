@@ -2,6 +2,7 @@ package com.sistema.janelas;
 
 import com.sistema.bean.Aluno;
 import com.sistema.listener.AlunoActionListener;
+import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JPasswordField;
@@ -23,6 +24,20 @@ public class CadAluno extends JInternalFrame {
     /**
      * Creates new form NovoJInternalFrame
      */
+    public Aluno getAluno() {
+        Aluno aluno = new Aluno();
+        aluno.setCodAluno(ccodigo.getText());
+        aluno.setNomeAluno(cnome.getText());
+        aluno.setSenhaAluno(Arrays.toString(csenha.getPassword()));
+        aluno.setSexo(csexo.getSelectedItem().toString());
+        aluno.setResponsavel(cresponsavel.getText());
+        aluno.setTelefone(ctelefone.getText());
+        aluno.setEmail(cemail.getText());
+        aluno.setEndereco(cendereco.getText());
+        aluno.setDataNasc(cDataNasc.getText());
+        return aluno;
+    }
+
     public CadAluno() {
         super("Cadastro de Alunos");
         initComponents();
@@ -241,28 +256,5 @@ public class CadAluno extends JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
-    /*
-    public Aluno getAluno() {
-        Aluno aluno = new Aluno();
-        aluno.setCodAluno(ccodigo.getText());
-        aluno.setNomeAluno(cnome.getText());
-        aluno.setSenhaAluno(csenha.getPassword().toString());
-        aluno.setSexo(csexo.getSelectedItem().toString());
-        aluno.setResponsavel(cresponsavel.getText());
-        aluno.setTelefone(ctelefone.getText());
-        aluno.setEmail(cemail.getText());
-        aluno.setEndereco(cendereco.getText());
-        return aluno;
-    }*/
-
-    public JTextField getCodigo() { return ccodigo; }
-    public JTextField getNome() {   return cnome;   }
-    public JPasswordField getSenha() {   return csenha;  }
-    public JComboBox getSexo(){ return csexo;   }
-    public JTextField getDataNasc(){ return cDataNasc;  }
-    public JTextField getResp(){ return cresponsavel;   }
-    public JTextField getTelefone(){    return ctelefone;   }
-    public JTextField getEmail(){   return cemail;  }
-    public JTextField getEnder(){ return cendereco;   }
 
 }

@@ -1,0 +1,3 @@
+001 : fulano : [f, u, l, a, n, o] : Masculino : fulano : fulano : fulano : fulano : fulano ;
+002 : ciclano : [c, i, c, l, a, n, o] : Masculino : ciclano : ciclano : ciclano : ciclano : ciclano ;
+004 : retardo : [r, e, t, a, r, d, o] : Masculino : retardo : retardo : retardo : retardo : retardo ;

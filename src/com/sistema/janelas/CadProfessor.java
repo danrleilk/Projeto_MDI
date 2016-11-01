@@ -18,8 +18,7 @@ public class CadProfessor extends JInternalFrame {
 
     private ProfessorActionListener listener = new ProfessorActionListener(this);
 
-    //private AlunoActionListener listener = new AlunoActionListener(this);
-   public Professor getProf() {
+    public Professor getProf() {
         Professor prof = new Professor();
         prof.setCodProf(ccodigo.getText());
         prof.setNomeProf(cnome.getText());
