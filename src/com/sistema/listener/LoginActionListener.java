@@ -30,6 +30,7 @@ public class LoginActionListener implements ActionListener {
 
             } catch (IOException ex) {
                 ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "não foi possivel salvar seus dados.");
             }
 
         } else if ("cancelar".equals(e.getActionCommand())) {

@@ -4,6 +4,7 @@ import com.sistema.janelas.CadProfessor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 public class ProfessorActionListener implements ActionListener {
 
@@ -31,6 +32,7 @@ public class ProfessorActionListener implements ActionListener {
                 frame.dispose();
             } catch (IOException ex) {
                 ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "não foi possivel salvar seus dados.");
             }
         } else if ("cancelar".equals(e.getActionCommand())) {
             frame.dispose();

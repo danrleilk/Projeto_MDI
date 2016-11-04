@@ -15,6 +15,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class AlunoActionListener implements ActionListener {
 
@@ -42,6 +43,7 @@ public class AlunoActionListener implements ActionListener {
                 frame.dispose();
             } catch (IOException ex) {
                 ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "não foi possivel salvar seus dados.");
             }
         } else if ("cancelar".equals(e.getActionCommand())) {
             frame.dispose();

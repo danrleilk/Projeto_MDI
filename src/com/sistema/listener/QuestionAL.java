@@ -9,9 +9,9 @@ import com.sistema.janelas.CadQuestion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
- *
  * @author Danrlei
  */
 public class QuestionAL implements ActionListener {
@@ -37,6 +37,7 @@ public class QuestionAL implements ActionListener {
                 frame.dispose();
             } catch (IOException ex) {
                 ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "não foi possivel salvar seus dados.");
             }
         } else if ("cancelar".equals(e.getActionCommand())) {
             frame.dispose();
