@@ -34,7 +34,7 @@ public class Sobre extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        jLabel1.setText("Feita por:");
+        jLabel1.setText(" Developed by:");
 
         jLabel2.setText("Anderson de Souza");
 

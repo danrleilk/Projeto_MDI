@@ -1,1 +1,2 @@
 003 : duente : [d, u, e, n, t, e] : Masculino : duente : duente : duente : duente : duente ;
+asd : asd : [a, s, d] : Feminino : asd : asd : asd : asd : asd ;

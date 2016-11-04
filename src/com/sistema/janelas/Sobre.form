@@ -60,7 +60,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Feita por:"/>
+        <Property name="text" type="java.lang.String" value=" Developed by:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
