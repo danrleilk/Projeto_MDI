@@ -87,6 +87,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Teste");
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
 
         jMenuItem4.setText("Iniciar Quiz");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +189,20 @@ public class Menu extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+
+        this.jDesktopPane1.removeAll();
+        NewQuestion nq = new NewQuestion();
+        this.jDesktopPane1.add(nq);
+        nq.setVisible(true);
+
+        try {
+            Log.escrever("Clicou em Iniciar Questoes ");
+        } catch (IOException exp) {
+            exp.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenu5ActionPerformed
 
     /**
      * @param args the command line arguments

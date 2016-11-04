@@ -43,9 +43,9 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="145" pref="145" max="-2" attributes="0"/>
-                      <Component id="Login" min="-2" max="-2" attributes="0"/>
+                      <Component id="Login" linkSize="3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" linkSize="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="87" max="32767" attributes="0"/>
@@ -67,8 +67,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="jButton1" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="Login" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" linkSize="4" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="Login" linkSize="4" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="89" max="32767" attributes="0"/>
           </Group>
