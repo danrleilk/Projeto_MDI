@@ -30,14 +30,14 @@ public class AlunoActionListener implements ActionListener {
             try {
                 Log.escrever("Cadastrou Aluno ");
                 Gravar.escrever("Alunos.txt", frame.getAluno().getCodAluno() + " : ");
-                Gravar.escrever("Alunos.txt", frame.getAluno().getNomeAluno()+ " : ");
-                Gravar.escrever("Alunos.txt", frame.getAluno().getSenhaAluno()+ " : ");
-                Gravar.escrever("Alunos.txt", frame.getAluno().getSexo()+ " : ");
-                Gravar.escrever("Alunos.txt", frame.getAluno().getDataNasc()+ " : ");
-                Gravar.escrever("Alunos.txt", frame.getAluno().getEmail()+ " : ");
-                Gravar.escrever("Alunos.txt", frame.getAluno().getTelefone()+ " : ");
-                Gravar.escrever("Alunos.txt", frame.getAluno().getEndereco()+ " : ");
-                Gravar.escrever("Alunos.txt", frame.getAluno().getResponsavel()+ " ;\n");
+                Gravar.escrever("Alunos.txt", frame.getAluno().getNomeAluno() + " : ");
+                Gravar.escrever("Alunos.txt", frame.getAluno().getSenhaAluno() + " : ");
+                Gravar.escrever("Alunos.txt", frame.getAluno().getSexo() + " : ");
+                Gravar.escrever("Alunos.txt", frame.getAluno().getDataNasc() + " : ");
+                Gravar.escrever("Alunos.txt", frame.getAluno().getEmail() + " : ");
+                Gravar.escrever("Alunos.txt", frame.getAluno().getTelefone() + " : ");
+                Gravar.escrever("Alunos.txt", frame.getAluno().getEndereco() + " : ");
+                Gravar.escrever("Alunos.txt", frame.getAluno().getResponsavel() + " ;\n");
 
                 frame.dispose();
             } catch (IOException ex) {

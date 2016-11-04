@@ -5,11 +5,24 @@
  */
 package com.sistema.janelas;
 
+import com.sistema.bean.Question;
+import com.sistema.listener.QuestionAL;
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author comp1
  */
-public class CadQuestion extends javax.swing.JInternalFrame {
+public class CadQuestion extends JInternalFrame {
+
+    private QuestionAL listener = new QuestionAL(this);
+
+    public Question getQuestion() {
+        Question q = new Question();
+        q.setEnunciado(enunciado.getText());
+        q.setOpcoes(a.getText().toString(), b.getText().toString(), c.getText().toString(), d.getText().toString(), r.getSelectedItem().toString());
+        return q;
+    }
 
     /**
      * Creates new form CadQuestions
@@ -39,10 +52,11 @@ public class CadQuestion extends javax.swing.JInternalFrame {
         enunciado = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        a1 = new javax.swing.JTextField();
-        b1 = new javax.swing.JTextField();
+        c = new javax.swing.JTextField();
+        d = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        r = new javax.swing.JComboBox<>();
+        cancelar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -51,24 +65,16 @@ public class CadQuestion extends javax.swing.JInternalFrame {
         jLabel2.setText("Alternativas:");
 
         Cadastrar.setText("Cadastrar");
+        Cadastrar.addActionListener(listener);
+        Cadastrar.setActionCommand("cadastrar");
 
         jLabel3.setText("a)");
 
         jLabel4.setText("b)");
 
         a.setPreferredSize(new java.awt.Dimension(200, 20));
-        a.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aActionPerformed(evt);
-            }
-        });
 
         b.setPreferredSize(new java.awt.Dimension(200, 20));
-        b.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bActionPerformed(evt);
-            }
-        });
 
         enunciado.setColumns(20);
         enunciado.setRows(5);
@@ -78,23 +84,18 @@ public class CadQuestion extends javax.swing.JInternalFrame {
 
         jLabel8.setText("d)");
 
-        a1.setPreferredSize(new java.awt.Dimension(200, 20));
-        a1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                a1ActionPerformed(evt);
-            }
-        });
+        c.setPreferredSize(new java.awt.Dimension(200, 20));
 
-        b1.setPreferredSize(new java.awt.Dimension(200, 20));
-        b1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b1ActionPerformed(evt);
-            }
-        });
+        d.setPreferredSize(new java.awt.Dimension(200, 20));
 
         jLabel9.setText("Resposta:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D" }));
+        r.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D" }));
+        r.setAutoscrolls(true);
+
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(listener);
+        cancelar.setActionCommand("cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,6 +113,14 @@ public class CadQuestion extends javax.swing.JInternalFrame {
                 .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Cadastrar)
+                        .addGap(14, 14, 14)
+                        .addComponent(cancelar)
+                        .addGap(104, 104, 104))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(303, 303, 303))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
@@ -119,23 +128,19 @@ public class CadQuestion extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(b1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(Cadastrar)))
-                        .addGap(84, 84, 84))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(303, 303, 303))))
+                            .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(84, 84, 84))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {a, a1, b, b1, jComboBox1});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {a, b, c, d, r});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel3, jLabel4, jLabel7, jLabel8});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Cadastrar, cancelar});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,52 +161,40 @@ public class CadQuestion extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(c, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(b1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(d, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(Cadastrar)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cadastrar)
+                    .addComponent(cancelar))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {a, a1, b, b1, jComboBox1});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {a, b, c, d, r});
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel3, jLabel4, jLabel7, jLabel8});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Cadastrar, cancelar});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aActionPerformed
-
-    private void bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bActionPerformed
-
-    private void a1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_a1ActionPerformed
-
-    private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cadastrar;
     private javax.swing.JTextField a;
-    private javax.swing.JTextField a1;
     private javax.swing.JTextField b;
-    private javax.swing.JTextField b1;
+    private javax.swing.JTextField c;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JTextField d;
     private javax.swing.JTextArea enunciado;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -210,5 +203,6 @@ public class CadQuestion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> r;
     // End of variables declaration//GEN-END:variables
 }

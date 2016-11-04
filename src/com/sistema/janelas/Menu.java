@@ -131,9 +131,9 @@ public class Menu extends javax.swing.JFrame {
         CadAluno ca = new CadAluno();
         this.jDesktopPane1.add(ca);
         ca.setVisible(true);
-        try{
-        Log.escrever("Abriu cadastro Aluno! ");
-        }catch(IOException ex){
+        try {
+            Log.escrever("Abriu cadastro Aluno! ");
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -143,9 +143,9 @@ public class Menu extends javax.swing.JFrame {
         CadProfessor cp = new CadProfessor();
         this.jDesktopPane1.add(cp);
         cp.setVisible(true);
-        try{
+        try {
             Log.escrever("Acessou Cadastro de professor ");
-        }catch(IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -155,9 +155,9 @@ public class Menu extends javax.swing.JFrame {
         CadQuestion cq = new CadQuestion();
         this.jDesktopPane1.add(cq);
         cq.setVisible(true);
-        try{
+        try {
             Log.escrever("Acessou Cadastro de Questões ");
-        }catch(IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -167,22 +167,22 @@ public class Menu extends javax.swing.JFrame {
         Sobre ex = new Sobre();
         this.jDesktopPane1.add(ex);
         ex.setVisible(true);
-        
-        try{
+
+        try {
             Log.escrever("Clicou em Sobre ");
-        }catch(IOException exp){
+        } catch (IOException exp) {
             exp.printStackTrace();
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             Log.escrever("Tentou acessor o Quiz ");
-        }catch(IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

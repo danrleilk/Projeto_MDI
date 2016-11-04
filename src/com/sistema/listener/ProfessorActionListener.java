@@ -1,12 +1,9 @@
 package com.sistema.listener;
 
-import com.sistema.bean.Professor;
 import com.sistema.janelas.CadProfessor;
-import com.sistema.janelas.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import javax.swing.JButton;
 
 public class ProfessorActionListener implements ActionListener {
 

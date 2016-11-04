@@ -27,13 +27,13 @@ public class LoginActionListener implements ActionListener {
                 fw.flush();
                 String mensagem = frame.getTextoTextField().getText();
                 Log.escrever(frame.getTextoTextField().getText() + " logou no Sistema! ");
-                
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
 
         } else if ("cancelar".equals(e.getActionCommand())) {
-            
+
             frame.dispose();
         }
     }
