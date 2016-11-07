@@ -2,6 +2,7 @@ package com.sistema.bean;
 
 public class Question {
 
+    private int codigo;
     private String enunciado;
     private String a, b, c, d, resp;
 
@@ -15,6 +16,14 @@ public class Question {
         this.c = c;
         this.d = d;
         this.resp = resp;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getEnunciado() {

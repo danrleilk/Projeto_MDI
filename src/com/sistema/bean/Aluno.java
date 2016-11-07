@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Aluno implements Serializable {
 
-    private String codAluno;
+    private int codAluno;
     private String nomeAluno;
     private String senhaAluno;
     private String sexo;
@@ -14,11 +14,11 @@ public class Aluno implements Serializable {
     private String telefone;
     private String endereco;
 
-    public String getCodAluno() {
+    public int getCodAluno() {
         return codAluno;
     }
 
-    public void setCodAluno(String codAluno) {
+    public void setCodAluno(int codAluno) {
         this.codAluno = codAluno;
     }
 

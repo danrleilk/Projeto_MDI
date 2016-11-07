@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  * @author comp1
  */
 public class CadAluno extends JInternalFrame {
-
+    
     private AlunoActionListener listener = new AlunoActionListener(this);
 
     /**
@@ -26,7 +26,7 @@ public class CadAluno extends JInternalFrame {
      */
     public Aluno getAluno() {
         Aluno aluno = new Aluno();
-        aluno.setCodAluno(ccodigo.getText());
+        aluno.setCodAluno(Integer.parseInt(ccodigo.getText()));
         aluno.setNomeAluno(cnome.getText());
         aluno.setSenhaAluno(Arrays.toString(csenha.getPassword()));
         aluno.setSexo(csexo.getSelectedItem().toString());
@@ -37,7 +37,7 @@ public class CadAluno extends JInternalFrame {
         aluno.setDataNasc(cDataNasc.getText());
         return aluno;
     }
-
+    
     public CadAluno() {
         super("Cadastro de Alunos");
         initComponents();

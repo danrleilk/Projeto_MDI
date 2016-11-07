@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Professor implements Serializable {
 
-    private String codProf;
+    private int codProf;
     private String nomeProf;
     private String senhaProf;
     private String sexo;
@@ -22,11 +22,11 @@ public class Professor implements Serializable {
         this.datanasc = datanasc;
     }
 
-    public String getCodProf() {
+    public int getCodProf() {
         return codProf;
     }
 
-    public void setCodProf(String codProf) {
+    public void setCodProf(int codProf) {
         this.codProf = codProf;
     }
 
@@ -84,6 +84,10 @@ public class Professor implements Serializable {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public void setCodProf(Integer codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

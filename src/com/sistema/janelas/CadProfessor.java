@@ -20,7 +20,7 @@ public class CadProfessor extends JInternalFrame {
 
     public Professor getProf() {
         Professor prof = new Professor();
-        prof.setCodProf(ccodigo.getText());
+        prof.setCodProf(Integer.parseInt(ccodigo.getText()));
         prof.setNomeProf(cnome.getText());
         prof.setSenhaProf(Arrays.toString(csenha.getPassword()));
         prof.setSexo(csexo.getSelectedItem().toString());
