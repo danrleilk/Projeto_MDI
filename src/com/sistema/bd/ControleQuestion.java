@@ -10,11 +10,13 @@ import java.util.List;
 
 public class ControleQuestion {
 
+    public String tabela = "Questions";
+
     public void delete(Question q) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "delete from questions where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, q.getCodigo());
@@ -54,7 +56,7 @@ public class ControleQuestion {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "insert into questions (codigo, enunciado, a, b, c, d, resp) values(?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, q.getCodigo());
@@ -102,7 +104,7 @@ public class ControleQuestion {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "update questions set enunciado = ? where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, q.getEnunciado());
@@ -144,7 +146,7 @@ public class ControleQuestion {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "select codigo, enunciado from questions";
             ps = conn.prepareStatement(sql);
 
@@ -182,7 +184,7 @@ public class ControleQuestion {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "select codigo, enunciado from questions where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codigo);

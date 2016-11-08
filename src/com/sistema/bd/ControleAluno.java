@@ -11,11 +11,13 @@ import java.util.List;
 //As exceções devem ser propagadas para a camada de apresentação, ou seja, deve ser utilizado throws em cada um dos métodos
 public class ControleAluno {
 
+    public String tabela = "Alunos";
+
     public void delete(Aluno al) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "delete from alunos where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, al.getCodAluno());
@@ -55,7 +57,7 @@ public class ControleAluno {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "insert into alunos (codigo, nome, senha, datanasc, sexo,email,endereco, telefone,especializacao) values(?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, al.getCodAluno());
@@ -105,7 +107,7 @@ public class ControleAluno {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "update alunos set nome = ? where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, al.getNomeAluno());
@@ -147,7 +149,7 @@ public class ControleAluno {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "select codigo, nome from alunos";
             ps = conn.prepareStatement(sql);
 
@@ -185,7 +187,7 @@ public class ControleAluno {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection();
+            conn = Conexao.getConnection(tabela);
             String sql = "select codigo, nome from alunos where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codigo);
