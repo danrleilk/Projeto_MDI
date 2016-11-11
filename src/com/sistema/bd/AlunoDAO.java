@@ -57,7 +57,7 @@ public class AlunoDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "insert into alunos (codigo, nome, senha, datanasc, sexo,email,endereco, telefone,especializacao) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into alunos (codigo, nome, senha, data, sexo,email,endereco, telefone,especializacao) values(?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, al.getCodAluno());
             ps.setString(2, al.getNomeAluno());

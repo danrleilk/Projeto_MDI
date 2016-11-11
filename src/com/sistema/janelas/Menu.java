@@ -182,8 +182,14 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
+        
+        this.jDesktopPane1.removeAll();
+        NewQuestion teste = new NewQuestion();
+        this.jDesktopPane1.add(teste);
+        teste.setVisible(true);
+        
         try {
-            Log.escrever("Tentou acessor o Quiz ");
+            Log.escrever("Acessou o Quiz ");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
