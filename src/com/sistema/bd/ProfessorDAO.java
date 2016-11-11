@@ -56,16 +56,16 @@ public class ProfessorDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "insert into professores (codigo, nome, senha, datanasc, sexo,email,endereco, telefone,especializacao) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into professores (codigo,nome,senha,sexo,data,email,telefone,endereco,especializacao) values(?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, prof.getCodProf());
             ps.setString(2, prof.getNomeProf());
             ps.setString(3, prof.getSenhaProf());
-            ps.setString(4, prof.getDatanasc());
-            ps.setString(5, prof.getSexo());
+            ps.setString(4, prof.getSexo());
+            ps.setString(5, prof.getDatanasc());
             ps.setString(6, prof.getEmail());
-            ps.setString(7, prof.getEndereco());
-            ps.setString(8, prof.getTelefone());
+            ps.setString(7, prof.getTelefone());
+            ps.setString(8, prof.getEndereco());
             ps.setString(9, prof.getEspecializacao());
 
             ps.execute();

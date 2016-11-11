@@ -12,7 +12,7 @@ public class Conexao {
         Connection conn = null;
         try {
             Class.forName("org.hsqldb.jdbcDriver");
-            conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/Pmdi/", "sa", "");
+            conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/pmdi", "sa", "");
         } catch (SQLException e) {
             System.out.println("Problemas ao conectar no banco de dados");
             JOptionPane.showMessageDialog(null, "Problemas ao conectar no banco de dados");

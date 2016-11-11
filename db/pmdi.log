@@ -1,7 +1,20 @@
-CREATE USER SA PASSWORD "" ADMIN
-/*C1*/SET SCHEMA PUBLIC
+/*C2*/SET SCHEMA PUBLIC
 CONNECT USER SA
-create table alunos(\u000acodigo int primary key,\u000aname varchar(50),\u000asenha varchar(15),\u000asexo varchar(15),\u000adata date,\u000aresponsavel varchar(50),\u000aemail varchar(50),\u000atelefone varchar(15),\u000aendereco varchar(80))
-create table professor(\u000acodigo int primary key,\u000aname varchar(50),\u000asenha varchar(15),\u000asexo varchar(15),\u000adata date,\u000aespecializacao varchar(50),\u000aemail varchar(50),\u000atelefone varchar(15),\u000aendereco varchar(80))
-create table question(\u000acodigo int primary key,\u000aenunciado varchar(200),\u000aa varchar(100),\u000ab varchar(100),\u000ac varchar(100),\u000ad varchar(100),\u000aresp varchar(2))
+DROP TABLE alunos\u000a
+CREATE TABLE Alunos (\u000acodigo int primary key,\u000anome varchar(50),\u000asenha varchar(50),\u000asexo varchar(50),\u000adata varchar(50),\u000aemail varchar(50),\u000atelefone varchar(50),\u000aendereco varchar(50),\u000aresponsavel varchar(50)\u000a)
+drop table professor\u000a
+CREATE TABLE professores (\u000acodigo int primary key,\u000anome varchar(50),\u000asenha varchar(50),\u000asexo varchar(50),\u000adata varchar(50),\u000aemail varchar(50),\u000atelefone varchar(50),\u000aendereco varchar(50),\u000aespecializacao varchar(50)\u000a)
+/*C3*/SET SCHEMA PUBLIC
+CONNECT USER SA
+INSERT INTO ALUNOS VALUES(561564,'5641asd564adgf','[4, f, a, s, d, 5, 6, 4, f, 5, 6]','Masculino','56fa4sdf','564sd56f46','4f6a4','564fds46','sdf564')
+DISCONNECT
+/*C2*/DROP TABLE QUESTION\u000a
+CREATE TABLE Questions(\u000acodigo int prImary key,\u000aenunciado varchar(200),\u000aa varchar(20),\u000ab varchar(20),\u000ac varchar(20),\u000ad varchar(20),\u000aresp char(1)\u000a)
+DISCONNECT
+/*C4*/SET SCHEMA PUBLIC
+CONNECT USER SA
+INSERT INTO QUESTIONS VALUES(0,'oi ?','hallo','hello','hella','hell','B')
+DISCONNECT
+/*C5*/SET SCHEMA PUBLIC
+CONNECT USER SA
 DISCONNECT

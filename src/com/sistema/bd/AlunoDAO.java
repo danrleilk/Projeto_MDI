@@ -11,7 +11,6 @@ import java.util.List;
 //As exceções devem ser propagadas para a camada de apresentação, ou seja, deve ser utilizado throws em cada um dos métodos
 public class AlunoDAO {
 
-
     public void delete(Aluno al) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -57,16 +56,16 @@ public class AlunoDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "insert into alunos (codigo, nome, senha, data, sexo,email,endereco, telefone,especializacao) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into alunos (codigo,nome,senha,sexo,data,email,telefone,endereco,responsavel) values(?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, al.getCodAluno());
             ps.setString(2, al.getNomeAluno());
             ps.setString(3, al.getSenhaAluno());
-            ps.setString(4, al.getDataNasc());
-            ps.setString(5, al.getSexo());
+            ps.setString(4, al.getSexo());
+            ps.setString(5, al.getDataNasc());
             ps.setString(6, al.getEmail());
-            ps.setString(7, al.getEndereco());
-            ps.setString(8, al.getTelefone());
+            ps.setString(7, al.getTelefone());
+            ps.setString(8, al.getEndereco());
             ps.setString(9, al.getResponsavel());
 
             ps.execute();
