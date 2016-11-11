@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ControleQuestion {
+public class QuestionDAO {
 
     public String tabela = "Questions";
 

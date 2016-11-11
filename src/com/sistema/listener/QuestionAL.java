@@ -5,6 +5,8 @@
  */
 package com.sistema.listener;
 
+import com.sistema.bd.QuestionDAO;
+import com.sistema.bean.Question;
 import com.sistema.janelas.CadQuestion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
 public class QuestionAL implements ActionListener {
 
     private final CadQuestion frame;
+    private QuestionDAO dao = new QuestionDAO();
 
     public QuestionAL(CadQuestion frame) {
         this.frame = frame;
@@ -25,20 +28,10 @@ public class QuestionAL implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if ("cadastrar".equals(e.getActionCommand())) {
-            try {
-                Log.escrever("Cadastrou Professor ");
-                Gravar.escrever("Questions.txt", frame.getQuestion().getEnunciado() + " \n ");
-                Gravar.escrever("Questions.txt", frame.getQuestion().getA() + " : ");
-                Gravar.escrever("Questions.txt", frame.getQuestion().getB() + " : ");
-                Gravar.escrever("Questions.txt", frame.getQuestion().getC() + " : ");
-                Gravar.escrever("Questions.txt", frame.getQuestion().getD() + " \n ");
-                Gravar.escrever("Questions.txt", frame.getQuestion().getResp() + " ; ");
-
-                frame.dispose();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(null, "não foi possivel salvar seus dados.");
-            }
+            Question q = new Question();
+            q = frame.getQuestion();
+            dao.insert(q);
+            frame.dispose();
         } else if ("cancelar".equals(e.getActionCommand())) {
             frame.dispose();
         }

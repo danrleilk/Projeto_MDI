@@ -1,6 +1,6 @@
 package com.sistema.bd;
 
-import com.sistema.bean.Professor;
+import com.sistema.bean.Aluno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 //As exceções devem ser propagadas para a camada de apresentação, ou seja, deve ser utilizado throws em cada um dos métodos
-public class ControleProfessor {
+public class AlunoDAO {
 
-    public String tabela = "Professores";
-    
-    public void delete(Professor prof) {
+    public String tabela = "Alunos";
+
+    public void delete(Aluno al) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection(tabela);
-            String sql = "delete from professores where codigo = ?";
+            String sql = "delete from alunos where codigo = ?";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, prof.getCodProf());
+            ps.setInt(1, al.getCodAluno());
             ps.execute();
 
             conn.commit();
@@ -53,22 +53,22 @@ public class ControleProfessor {
         }
     }
 
-    public void insert(Professor prof) {
+    public void insert(Aluno al) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection(tabela);
-            String sql = "insert into professores (codigo, nome, senha, datanasc, sexo,email,endereco, telefone,especializacao) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into alunos (codigo, nome, senha, datanasc, sexo,email,endereco, telefone,especializacao) values(?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, prof.getCodProf());
-            ps.setString(2, prof.getNomeProf());
-            ps.setString(3, prof.getSenhaProf());
-            ps.setString(4, prof.getDatanasc());
-            ps.setString(5, prof.getSexo());
-            ps.setString(6, prof.getEmail());
-            ps.setString(7, prof.getEndereco());
-            ps.setString(8, prof.getTelefone());
-            ps.setString(9, prof.getEspecializacao());
+            ps.setInt(1, al.getCodAluno());
+            ps.setString(2, al.getNomeAluno());
+            ps.setString(3, al.getSenhaAluno());
+            ps.setString(4, al.getDataNasc());
+            ps.setString(5, al.getSexo());
+            ps.setString(6, al.getEmail());
+            ps.setString(7, al.getEndereco());
+            ps.setString(8, al.getTelefone());
+            ps.setString(9, al.getResponsavel());
 
             ps.execute();
 
@@ -103,15 +103,15 @@ public class ControleProfessor {
         }
     }
 
-    public void update(Professor prof) {
+    public void update(Aluno al) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection(tabela);
-            String sql = "update professores set nome = ? where codigo = ?";
+            String sql = "update alunos set nome = ? where codigo = ?";
             ps = conn.prepareStatement(sql);
-            ps.setString(1, prof.getNomeProf());
-            ps.setInt(2, prof.getCodProf());
+            ps.setString(1, al.getNomeAluno());
+            ps.setInt(2, al.getCodAluno());
             ps.execute();
 
             conn.commit();
@@ -144,22 +144,22 @@ public class ControleProfessor {
         }
     }
 
-    public List<Professor> getAll() {
-        List<Professor> lista = new ArrayList<Professor>();
+    public List<Aluno> getAll() {
+        List<Aluno> lista = new ArrayList<Aluno>();
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection(tabela);
-            String sql = "select codigo, nome from professores";
+            String sql = "select codigo, nome from alunos";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Integer codigo = rs.getInt(1);
                 String nome = rs.getString(2);
-                Professor p = new Professor();
-                p.setCodProf(codigo);
-                p.setNomeProf(nome);
+                Aluno p = new Aluno();
+                p.setCodAluno(codigo);
+                p.setNomeAluno(nome);
                 lista.add(p);
             }
         } catch (SQLException e) {
@@ -183,21 +183,21 @@ public class ControleProfessor {
         return lista;
     }
 
-    public Professor getProfessor(Integer codigo) {
+    public Aluno getProfessor(Integer codigo) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection(tabela);
-            String sql = "select codigo, nome from professores where codigo = ?";
+            String sql = "select codigo, nome from alunos where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codigo);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Integer cod = rs.getInt(1);
-                String descricao = rs.getString(2);
-                Professor p = new Professor();
-                p.setCodProf(cod);
-                p.setNomeProf(descricao);
+                String nome = rs.getString(2);
+                Aluno p = new Aluno();
+                p.setCodAluno(cod);
+                p.setNomeAluno(nome);
                 return p;
             }
         } catch (SQLException e) {
