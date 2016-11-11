@@ -10,13 +10,11 @@ import java.util.List;
 
 public class QuestionDAO {
 
-    public String tabela = "Questions";
-
     public void delete(Question q) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection(tabela);
+            conn = Conexao.getConnection();
             String sql = "delete from questions where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, q.getCodigo());
@@ -56,7 +54,7 @@ public class QuestionDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection(tabela);
+            conn = Conexao.getConnection();
             String sql = "insert into questions (codigo, enunciado, a, b, c, d, resp) values(?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, q.getCodigo());
@@ -104,7 +102,7 @@ public class QuestionDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection(tabela);
+            conn = Conexao.getConnection();
             String sql = "update questions set enunciado = ? where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, q.getEnunciado());
@@ -146,7 +144,7 @@ public class QuestionDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection(tabela);
+            conn = Conexao.getConnection();
             String sql = "select codigo, enunciado from questions";
             ps = conn.prepareStatement(sql);
 
@@ -184,7 +182,7 @@ public class QuestionDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection(tabela);
+            conn = Conexao.getConnection();
             String sql = "select codigo, enunciado from questions where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codigo);

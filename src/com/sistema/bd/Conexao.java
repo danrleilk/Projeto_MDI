@@ -6,11 +6,11 @@ import javax.swing.JOptionPane;
 
 public class Conexao {
 
-    public static Connection getConnection(String tabela) {
+    public static Connection getConnection() {
         Connection conn = null;
         try {
             Class.forName("org.hsqldb.jdbcDriver");
-            conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/" + tabela + "", "sa", "");
+            conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/Pmdi/", "sa", "");
         } catch (SQLException e) {
             System.out.println("Problemas ao conectar no banco de dados");
             JOptionPane.showConfirmDialog(null, "Problemas ao conectar no banco de dados");
