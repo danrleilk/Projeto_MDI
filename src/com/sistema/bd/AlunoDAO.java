@@ -181,7 +181,7 @@ public class AlunoDAO {
         return lista;
     }
 
-    public Aluno getProfessor(Integer codigo) {
+    public Aluno getAluno(Integer codigo) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {

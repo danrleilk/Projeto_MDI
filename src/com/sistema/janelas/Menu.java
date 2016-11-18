@@ -36,6 +36,8 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -83,6 +85,22 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMenuItem3);
+
+        jMenuItem6.setText("Consultar Aluno");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem6);
+
+        jMenuItem7.setText("Consultar Professor");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem7);
 
         jMenuBar1.add(jMenu4);
 
@@ -210,6 +228,32 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenu5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        this.jDesktopPane1.removeAll();
+        ConsultaAluno ca = new ConsultaAluno();
+        this.jDesktopPane1.add(ca);
+        ca.setVisible(true);
+
+        try {
+            Log.escrever("Clicou em Iniciar Questoes ");
+        } catch (IOException exp) {
+            exp.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        this.jDesktopPane1.removeAll();
+        ConsultarProfessor cp = new ConsultarProfessor();
+        this.jDesktopPane1.add(cp);
+        cp.setVisible(true);
+
+        try {
+            Log.escrever("Clicou em Consultar Professor");
+        } catch (IOException exp) {
+            exp.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,5 +301,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }
