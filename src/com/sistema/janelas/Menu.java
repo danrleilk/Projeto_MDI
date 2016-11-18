@@ -38,6 +38,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -101,6 +102,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMenuItem7);
+
+        jMenuItem8.setText("Consultar Questoes");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem8);
 
         jMenuBar1.add(jMenu4);
 
@@ -200,12 +209,12 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        
+
         this.jDesktopPane1.removeAll();
         NewQuestion teste = new NewQuestion();
         this.jDesktopPane1.add(teste);
         teste.setVisible(true);
-        
+
         try {
             Log.escrever("Acessou o Quiz ");
         } catch (IOException ex) {
@@ -253,6 +262,19 @@ public class Menu extends javax.swing.JFrame {
             exp.printStackTrace();
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        this.jDesktopPane1.removeAll();
+        ConsultaQuestions cq = new ConsultaQuestions();
+        this.jDesktopPane1.add(cq);
+        cq.setVisible(true);
+
+        try {
+            Log.escrever("Clicou em Consultar Questoes ");
+        } catch (IOException exp) {
+            exp.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,5 +325,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }

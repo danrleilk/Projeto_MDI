@@ -183,16 +183,23 @@ public class QuestionDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, enunciado from questions where codigo = ?";
+            String sql = "select * from questions where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codigo);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Integer cod = rs.getInt(1);
                 String enunciado = rs.getString(2);
+                String a = rs.getString(3);
+                String b = rs.getString(4);
+                String c = rs.getString(5);
+                String d = rs.getString(6);
+                String resp = rs.getString(7);
+
                 Question p = new Question();
                 p.setCodigo(cod);
                 p.setEnunciado(enunciado);
+                p.setOpcoes(a, b, c, d, resp);
                 return p;
             }
         } catch (SQLException e) {
