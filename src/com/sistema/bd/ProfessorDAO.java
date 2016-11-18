@@ -10,7 +10,7 @@ import java.util.List;
 
 //As exceções devem ser propagadas para a camada de apresentação, ou seja, deve ser utilizado throws em cada um dos métodos
 public class ProfessorDAO {
-    
+
     public void delete(Professor prof) {
         Connection conn = null;
         PreparedStatement ps = null;

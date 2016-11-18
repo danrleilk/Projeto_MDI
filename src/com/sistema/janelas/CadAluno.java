@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  * @author comp1
  */
 public class CadAluno extends JInternalFrame {
-    
+
     private AlunoActionListener listener = new AlunoActionListener(this);
 
     /**
@@ -37,7 +37,7 @@ public class CadAluno extends JInternalFrame {
         aluno.setDataNasc(cDataNasc.getText());
         return aluno;
     }
-    
+
     public CadAluno() {
         super("Cadastro de Alunos");
         initComponents();

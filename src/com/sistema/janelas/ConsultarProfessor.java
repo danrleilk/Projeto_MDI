@@ -5,12 +5,11 @@ import com.sistema.bean.Professor;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 public class ConsultarProfessor extends javax.swing.JInternalFrame {
 
     private ProfessorDAO professordao = new ProfessorDAO();
     private Professor professor = new Professor();
-    
+
     public ConsultarProfessor() {
         initComponents();
     }
@@ -169,7 +168,7 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
             }
 
             public Object getElementAt(int i) {
-                return strings[i].getCodProf()+ " - " + strings[i].getNomeProf();
+                return strings[i].getCodProf() + " - " + strings[i].getNomeProf();
             }
         });
     }//GEN-LAST:event_btnTodosActionPerformed
@@ -198,21 +197,21 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
     private void txtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoFocusLost
 
         String codTxt = txtCodigo.getText().trim();
-        if(codTxt.length() > 0){
+        if (codTxt.length() > 0) {
             Integer codigoProfessor = null;
-            try{
+            try {
                 codigoProfessor = Integer.parseInt(codTxt);
-            }catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 //o código informado é inválido
                 return;
             }
 
             Professor p = professordao.getProfessor(codigoProfessor);
-            if(p == null){
+            if (p == null) {
                 JOptionPane.showMessageDialog(this, "Produto não encontrado!");
                 //limpar();
                 txtDescricao.setText("");
-            }else{
+            } else {
                 setProfessor(p);
             }
 
@@ -235,8 +234,7 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
         return p;
     }
 
- //    @param args the command line arguments
-    
+    //    @param args the command line arguments
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 

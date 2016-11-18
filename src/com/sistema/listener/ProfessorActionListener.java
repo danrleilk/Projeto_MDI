@@ -12,7 +12,6 @@ public class ProfessorActionListener implements ActionListener {
 
     private final CadProfessor frame;
     private ProfessorDAO dao = new ProfessorDAO();
-            
 
     public ProfessorActionListener(CadProfessor frame) {
         this.frame = frame;

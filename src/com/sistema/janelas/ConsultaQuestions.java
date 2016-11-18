@@ -253,12 +253,11 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         return q;
     }
 
-    public Question setQuesitons(Question q) {
+    public Question setQuestions(Question q) {
         q.setCodigo(Integer.valueOf(codigo.getText()));
         q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), resposta.getSelectedItem().toString());
         return q;
     }
-
 
     private void MostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarTodosActionPerformed
         List<Question> QList = QD.getAll();
@@ -280,7 +279,6 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
             }
         });
     }//GEN-LAST:event_MostrarTodosActionPerformed
-
 
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
         Question q = getQuestion();
@@ -325,12 +323,12 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
             if (q == null) {
                 JOptionPane.showMessageDialog(this, "Questão não encontrada!");
                 limpar();
+                
             } else {
-                setQuesitons(q);
+                setQuestions(q);
             }
         }
     }//GEN-LAST:event_codigoFocusLost
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Apagar;

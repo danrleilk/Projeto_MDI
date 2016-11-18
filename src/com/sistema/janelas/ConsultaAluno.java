@@ -184,7 +184,6 @@ public class ConsultaAluno extends JInternalFrame {
         //tratar exceções
         alunodao.update(a);
 
-
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void txtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoFocusLost
@@ -203,7 +202,7 @@ public class ConsultaAluno extends JInternalFrame {
             if (a == null) {
                 JOptionPane.showMessageDialog(this, "Produto não encontrado!");
                 //limpar();
-                txtDescricao.setText("");
+                txtDescricao.setText("Nada");
             } else {
                 setAluno(a);
             }
