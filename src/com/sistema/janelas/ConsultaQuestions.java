@@ -254,8 +254,13 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
     }
 
     public Question setQuestions(Question q) {
-        q.setCodigo(Integer.valueOf(codigo.getText()));
-        q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), resposta.getSelectedItem().toString());
+        codigo.setText(String.valueOf(q.getCodigo()));
+        enunciado.setText(q.getEnunciado());
+        a.setText(q.getA());
+        b.setText(q.getB());
+        c.setText(q.getC());
+        d.setText(q.getD());
+        resposta.setSelectedItem(q.getResp());
         return q;
     }
 
@@ -323,7 +328,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
             if (q == null) {
                 JOptionPane.showMessageDialog(this, "Questão não encontrada!");
                 limpar();
-                
+
             } else {
                 setQuestions(q);
             }
