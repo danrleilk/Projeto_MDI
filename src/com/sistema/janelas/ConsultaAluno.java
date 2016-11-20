@@ -39,9 +39,10 @@ public class ConsultaAluno extends JInternalFrame {
         txtCodigo = new javax.swing.JTextField();
         txtDescricao = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lstProdutos = new javax.swing.JList();
+        lstAlunos = new javax.swing.JList();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnTodos.setText("Mostrar Todos");
         btnTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -83,14 +84,14 @@ public class ConsultaAluno extends JInternalFrame {
 
         lblDescricao.setText("Descrição");
 
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
         txtCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCodigoFocusLost(evt);
+            }
+        });
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
             }
         });
 
@@ -141,7 +142,7 @@ public class ConsultaAluno extends JInternalFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
 
-        jScrollPane1.setViewportView(lstProdutos);
+        jScrollPane1.setViewportView(lstAlunos);
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -164,8 +165,8 @@ public class ConsultaAluno extends JInternalFrame {
         for (Aluno a : alunosList) {
             strings[i++] = a;
         }
-        lstProdutos.removeAll();
-        lstProdutos.setModel(new javax.swing.AbstractListModel() {
+        lstAlunos.removeAll();
+        lstAlunos.setModel(new javax.swing.AbstractListModel() {
 
             public int getSize() {
                 return strings.length;
@@ -251,7 +252,7 @@ public class ConsultaAluno extends JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescricao;
-    private javax.swing.JList lstProdutos;
+    private javax.swing.JList lstAlunos;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescricao;
     // End of variables declaration//GEN-END:variables

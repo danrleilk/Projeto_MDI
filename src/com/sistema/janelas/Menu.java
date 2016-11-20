@@ -36,6 +36,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -61,7 +62,7 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 800, Short.MAX_VALUE)
         );
 
-        jMenu4.setText("Menu");
+        jMenu4.setText("Cadastros");
 
         jMenuItem1.setText("Novo Aluno");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -87,13 +88,17 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem3);
 
+        jMenuBar1.add(jMenu4);
+
+        jMenu1.setText("Consultas");
+
         jMenuItem6.setText("Consultar Aluno");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem6);
+        jMenu1.add(jMenuItem6);
 
         jMenuItem7.setText("Consultar Professor");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +106,7 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem7ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem7);
+        jMenu1.add(jMenuItem7);
 
         jMenuItem8.setText("Consultar Questoes");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
@@ -109,9 +114,9 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem8);
+        jMenu1.add(jMenuItem8);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenu1);
 
         jMenu5.setText("Teste");
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
@@ -313,6 +318,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
