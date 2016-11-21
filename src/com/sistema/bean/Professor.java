@@ -86,8 +86,4 @@ public class Professor implements Serializable {
         this.endereco = endereco;
     }
 
-    public void setCodProf(Integer codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
