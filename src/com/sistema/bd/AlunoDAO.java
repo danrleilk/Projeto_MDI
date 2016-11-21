@@ -193,9 +193,24 @@ public class AlunoDAO {
             if (rs.next()) {
                 Integer cod = rs.getInt(1);
                 String nome = rs.getString(2);
+                String senha = rs.getString(3);
+                String sexo = rs.getString(4);
+                String datanasc = rs.getString(5);
+                String email = rs.getString(6);
+                String telefone = rs.getString(7);
+                String endereco = rs.getString(8);
+                String responsavel = rs.getString(9);
+                
                 Aluno p = new Aluno();
                 p.setCodAluno(cod);
                 p.setNomeAluno(nome);
+                p.setSenhaAluno(senha);
+                p.setEmail(email);
+                p.setEndereco(endereco);
+                p.setNomeAluno(responsavel);
+                p.setTelefone(telefone);
+                p.setDataNasc(datanasc);
+                p.setSexo(sexo);
                 return p;
             }
         } catch (SQLException e) {

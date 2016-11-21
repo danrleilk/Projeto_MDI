@@ -191,12 +191,35 @@ public class ProfessorDAO {
             ps.setInt(1, codigo);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+                
+                
+                Integer cod = rs.getInt(1);
+                String nome = rs.getString(2);
+                String senha = rs.getString(3);
+                String sexo = rs.getString(4);
+                String datanasc = rs.getString(5);
+                String email = rs.getString(6);
+                String telefone = rs.getString(7);
+                String endereco = rs.getString(8);
+                String Especializacao = rs.getString(9);
+                
+                Professor p = new Professor();
+                p.setCodProf(cod);
+                p.setNomeProf(nome);
+                p.setSenhaProf(senha);
+                p.setEmail(email);
+                p.setEndereco(endereco);
+                p.setEspecializacao(Especializacao);
+                p.setTelefone(telefone);
+                p.setDataNasc(datanasc);
+                p.setSexo(sexo);
+                /*
                 Integer cod = rs.getInt(1);
                 String descricao = rs.getString(2);
                 Professor p = new Professor();
                 p.setCodProf(cod);
                 p.setNomeProf(descricao);
-                return p;
+                return p;*/
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());

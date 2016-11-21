@@ -18,7 +18,7 @@ public class Professor implements Serializable {
         return datanasc;
     }
 
-    public void setDatanasc(String datanasc) {
+    public void setDataNasc(String datanasc) {
         this.datanasc = datanasc;
     }
 

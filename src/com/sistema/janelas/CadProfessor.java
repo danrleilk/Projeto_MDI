@@ -28,7 +28,7 @@ public class CadProfessor extends JInternalFrame {
         prof.setTelefone(ctelefone.getText());
         prof.setEmail(cemail.getText());
         prof.setEndereco(cendereco.getText());
-        prof.setDatanasc(cDataNasc.getText());
+        prof.setDataNasc(cDataNasc.getText());
         return prof;
     }
 

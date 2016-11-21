@@ -319,7 +319,7 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
         p.setNomeProf(cnome.getText());
         p.setSenhaProf(csenha.getPassword().toString());
         p.setSexo(csexo.getSelectedItem().toString());
-        p.setDatanasc(cDataNasc.getText());
+        p.setDataNasc(cDataNasc.getText());
         p.setEmail(cemail.getText());
         p.setTelefone(ctelefone.getText());
         p.setEndereco(cendereco.getText());
