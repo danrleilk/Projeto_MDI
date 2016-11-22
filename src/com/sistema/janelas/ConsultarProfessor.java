@@ -245,7 +245,7 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
 
             Professor p = pd.getProfessor(codigoProfessor);
             if (p == null) {
-                JOptionPane.showMessageDialog(this, "Produto não encontrado!");
+                JOptionPane.showMessageDialog(this, "Professor não encontrado!");
                 limpar();
 
             } else {

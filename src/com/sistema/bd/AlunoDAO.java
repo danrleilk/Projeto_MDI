@@ -186,7 +186,7 @@ public class AlunoDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, nome from alunos where codigo = ?";
+            String sql = "select * from alunos where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codigo);
             ResultSet rs = ps.executeQuery();
@@ -200,17 +200,17 @@ public class AlunoDAO {
                 String telefone = rs.getString(7);
                 String endereco = rs.getString(8);
                 String responsavel = rs.getString(9);
-                
+
                 Aluno p = new Aluno();
                 p.setCodAluno(cod);
                 p.setNomeAluno(nome);
                 p.setSenhaAluno(senha);
-                p.setEmail(email);
-                p.setEndereco(endereco);
-                p.setNomeAluno(responsavel);
-                p.setTelefone(telefone);
-                p.setDataNasc(datanasc);
                 p.setSexo(sexo);
+                p.setDataNasc(datanasc);
+                p.setEmail(email);
+                p.setTelefone(telefone);
+                p.setEndereco(endereco);
+                p.setResponsavel(responsavel);
                 return p;
             }
         } catch (SQLException e) {

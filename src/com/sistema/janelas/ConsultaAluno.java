@@ -197,7 +197,7 @@ public class ConsultaAluno extends JInternalFrame {
                 .addGroup(ProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel7)
                     .addComponent(cresp, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(ProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTodos)
                     .addComponent(btnExcluir)
@@ -216,7 +216,6 @@ public class ConsultaAluno extends JInternalFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(ListAluno);
-        ListAluno.getAccessibleContext().setAccessibleParent(null);
 
         getContentPane().add(jScrollPane3, java.awt.BorderLayout.PAGE_START);
 
@@ -273,7 +272,7 @@ public class ConsultaAluno extends JInternalFrame {
 
             Aluno A = AD.getAluno(codigo);
             if (A == null) {
-                JOptionPane.showMessageDialog(this, "Produto não encontrado!");
+                JOptionPane.showMessageDialog(this, "Aluno não encontrado!");
                 limpar();
 
             } else {
