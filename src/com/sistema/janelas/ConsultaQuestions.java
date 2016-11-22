@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author comp1
  */
 public class ConsultaQuestions extends javax.swing.JInternalFrame {
-    
+
     private Question Q = new Question();
     private QuestionDAO QD = new QuestionDAO();
 
@@ -25,7 +25,6 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
      */
     public ConsultaQuestions() {
         initComponents();
-        atualizarListQuestions();
     }
 
     /**
@@ -121,6 +120,11 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         });
 
         Apagar.setText("Apagar");
+        Apagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApagarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Codigo :");
 
@@ -173,7 +177,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -234,7 +238,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
     private void atualizarListQuestions() {
         ListQuestion.setListData(new Vector(QD.getAll()));
     }
-    
+
     private void limpar() {
         Q = null;
         codigo.setText("");
@@ -244,9 +248,8 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         c.setText("");
         d.setText("");
     }
-    
+
     public Question setQuestions(Question q) {
-        
         enunciado.setText(q.getEnunciado());
         a.setText(q.getA());
         b.setText(q.getB());
@@ -255,7 +258,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         resposta.setSelectedItem(q.getResp());
         return q;
     }
-    
+
     public Question getQuestions() {
         Question q = new Question();
         q.setCodigo(Integer.parseInt(codigo.getText()));
@@ -268,17 +271,17 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         List<Question> QList = QD.getAll();
         final Question[] strings = new Question[QList.size()];
         int i = 0;
-        
+
         for (Question a : QList) {
             strings[i++] = a;
         }
         ListQuestion.removeAll();
         ListQuestion.setModel(new javax.swing.AbstractListModel() {
-            
+
             public int getSize() {
                 return strings.length;
             }
-            
+
             public Object getElementAt(int i) {
                 return strings[i].getCodigo() + " - " + strings[i].getEnunciado();
             }
@@ -300,7 +303,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         Q.setCodigo(Integer.parseInt(codigo.getText()));
         Q.setEnunciado(enunciado.getText().toString());
         Q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), resposta.getSelectedItem().toString());
-        
+
         if (novo) {
             try {
                 QD.insert(Q);
@@ -314,7 +317,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_SalvarActionPerformed
 
     private void codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoFocusLost
-        
+
         String codTxt = codigo.getText().trim();
         if (codTxt.length() > 0) {
             Integer codigo = null;
@@ -324,17 +327,22 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
                 //o código informado é inválido
                 return;
             }
-            
+
             Question q = QD.getQuestion(codigo);
             if (q == null) {
                 JOptionPane.showMessageDialog(this, "Questão não encontrada!");
-                limpar();
-                
+
             } else {
                 setQuestions(q);
             }
         }
     }//GEN-LAST:event_codigoFocusLost
+
+    private void ApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarActionPerformed
+        Question Q = getQuestions();
+        QD.delete(Q);
+        limpar();
+    }//GEN-LAST:event_ApagarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Apagar;

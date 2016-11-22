@@ -103,7 +103,7 @@ public class QuestionDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "update questions set enunciado= ? , a=?, b=? c=?,d=?, resp= ? where codigo=?";
+            String sql = "update questions set enunciado= ? , a=?, b=?, c=?,d=?, resp= ? where codigo=?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, q.getEnunciado());
             ps.setString(2, q.getA());

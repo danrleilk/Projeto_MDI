@@ -288,6 +288,7 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
         Professor p = getProfessor();
         //tratar exceções
         pd.update(p);
+        limpar();
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void limpar() {

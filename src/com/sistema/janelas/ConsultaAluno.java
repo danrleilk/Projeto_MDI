@@ -3,6 +3,7 @@ package com.sistema.janelas;
 import com.sistema.bd.AlunoDAO;
 import com.sistema.bean.Aluno;
 import java.util.List;
+import java.util.Vector;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -145,15 +146,15 @@ public class ConsultaAluno extends JInternalFrame {
                     .addComponent(ccodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(csenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(ProfLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(23, 23, 23)
                 .addComponent(btnTodos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtualizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExcluir)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         ProfLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cnome, csenha});
@@ -224,17 +225,37 @@ public class ConsultaAluno extends JInternalFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         // TODO add your handling code here:
-        Aluno p = getAluno();
+        Aluno a = getAluno();
         //tratar exceções
-        AD.update(p);
+        AD.update(a);
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        boolean novo = false;
+        if (aluno == null) {
+            aluno = new Aluno();
+            novo = true;
+        }
+        aluno.setCodAluno(Integer.parseInt(ccodigo.getText()));
+
+        // adcionar o resto dos campos de aluno acima 
+        if (novo) {
+            try {
+                AD.insert(aluno);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(),
+                        "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        limpar();
+        atualizarListAluno();
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-
+        Aluno a = getAluno();
+        AD.delete(a);
+        limpar();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosActionPerformed
@@ -284,6 +305,10 @@ public class ConsultaAluno extends JInternalFrame {
     private void cnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cnomeActionPerformed
+
+    private void atualizarListAluno() {
+        ListAluno.setListData(new Vector(AD.getAll()));
+    }
 
     private void limpar() {
         ccodigo.setText("");
