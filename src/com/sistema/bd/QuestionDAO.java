@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionDAO {
-    
+
     public void delete(Question q) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -19,11 +19,11 @@ public class QuestionDAO {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, q.getCodigo());
             ps.execute();
-            
+
             conn.commit();
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
-            
+
             if (conn != null) {
                 try {
                     conn.rollback();
@@ -31,7 +31,7 @@ public class QuestionDAO {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-            
+
         } finally {
             if (ps != null) {
                 try {
@@ -49,7 +49,7 @@ public class QuestionDAO {
             }
         }
     }
-    
+
     public void insert(Question q) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -64,14 +64,14 @@ public class QuestionDAO {
             ps.setString(5, q.getC());
             ps.setString(6, q.getD());
             ps.setString(7, q.getResp());
-            
+
             ps.execute();
-            
+
             conn.commit();
-            
+
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
-            
+
             if (conn != null) {
                 try {
                     conn.rollback();
@@ -79,7 +79,7 @@ public class QuestionDAO {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-            
+
         } finally {
             if (ps != null) {
                 try {
@@ -97,22 +97,27 @@ public class QuestionDAO {
             }
         }
     }
-    
+
     public void update(Question q) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "update questions set enunciado = ? where codigo = ?";
+            String sql = "update questions set enunciado= ? , a=?, b=? c=?,d=?, resp= ? where codigo=?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, q.getEnunciado());
-            ps.setInt(2, q.getCodigo());
+            ps.setString(2, q.getA());
+            ps.setString(3, q.getB());
+            ps.setString(4, q.getC());
+            ps.setString(5, q.getD());
+            ps.setString(6, q.getResp());
+            ps.setInt(7, q.getCodigo());
             ps.execute();
-            
+
             conn.commit();
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
-            
+
             if (conn != null) {
                 try {
                     conn.rollback();
@@ -120,7 +125,7 @@ public class QuestionDAO {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-            
+
         } finally {
             if (ps != null) {
                 try {
@@ -138,7 +143,7 @@ public class QuestionDAO {
             }
         }
     }
-    
+
     public List<Question> getAll() {
         List<Question> lista = new ArrayList<Question>();
         Connection conn = null;
@@ -147,7 +152,7 @@ public class QuestionDAO {
             conn = Conexao.getConnection();
             String sql = "select codigo, enunciado from questions";
             ps = conn.prepareStatement(sql);
-            
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Integer codigo = rs.getInt(1);
@@ -177,7 +182,7 @@ public class QuestionDAO {
         }
         return lista;
     }
-    
+
     public Question getQuestion(Integer codigo) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -188,6 +193,7 @@ public class QuestionDAO {
             ps.setInt(1, codigo);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+
                 Integer cod = rs.getInt(1);
                 String enunciado = rs.getString(2);
                 String a = rs.getString(3);
@@ -195,7 +201,7 @@ public class QuestionDAO {
                 String c = rs.getString(5);
                 String d = rs.getString(6);
                 String resp = rs.getString(7);
-                
+
                 Question p = new Question();
                 p.setCodigo(cod);
                 p.setEnunciado(enunciado);
@@ -222,5 +228,5 @@ public class QuestionDAO {
         }
         return null;
     }
-    
+
 }

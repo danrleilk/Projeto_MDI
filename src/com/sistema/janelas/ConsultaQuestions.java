@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author comp1
  */
 public class ConsultaQuestions extends javax.swing.JInternalFrame {
-
+    
     private Question Q = new Question();
     private QuestionDAO QD = new QuestionDAO();
 
@@ -234,18 +234,19 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
     private void atualizarListQuestions() {
         ListQuestion.setListData(new Vector(QD.getAll()));
     }
-
+    
     private void limpar() {
         Q = null;
+        codigo.setText("");
         enunciado.setText("");
         a.setText("");
         b.setText("");
         c.setText("");
         d.setText("");
     }
-
-    public Question getQuestion() {
-        Question q = new Question();
+    
+    public Question setQuestions(Question q) {
+        
         enunciado.setText(q.getEnunciado());
         a.setText(q.getA());
         b.setText(q.getB());
@@ -254,15 +255,12 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         resposta.setSelectedItem(q.getResp());
         return q;
     }
-
-    public Question setQuestions(Question q) {
-        codigo.setText(String.valueOf(q.getCodigo()));
-        enunciado.setText(q.getEnunciado());
-        a.setText(q.getA());
-        b.setText(q.getB());
-        c.setText(q.getC());
-        d.setText(q.getD());
-        resposta.setSelectedItem(q.getResp());
+    
+    public Question getQuestions() {
+        Question q = new Question();
+        q.setCodigo(Integer.parseInt(codigo.getText()));
+        q.setEnunciado(enunciado.getText());
+        q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), resposta.getSelectedItem().toString());
         return q;
     }
 
@@ -270,17 +268,17 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         List<Question> QList = QD.getAll();
         final Question[] strings = new Question[QList.size()];
         int i = 0;
-
+        
         for (Question a : QList) {
             strings[i++] = a;
         }
         ListQuestion.removeAll();
         ListQuestion.setModel(new javax.swing.AbstractListModel() {
-
+            
             public int getSize() {
                 return strings.length;
             }
-
+            
             public Object getElementAt(int i) {
                 return strings[i].getCodigo() + " - " + strings[i].getEnunciado();
             }
@@ -288,8 +286,9 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_MostrarTodosActionPerformed
 
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
-        Question q = getQuestion();
+        Question q = getQuestions();
         QD.update(q);
+        limpar();
     }//GEN-LAST:event_AtualizarActionPerformed
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
@@ -301,7 +300,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         Q.setCodigo(Integer.parseInt(codigo.getText()));
         Q.setEnunciado(enunciado.getText().toString());
         Q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), resposta.getSelectedItem().toString());
-
+        
         if (novo) {
             try {
                 QD.insert(Q);
@@ -315,7 +314,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_SalvarActionPerformed
 
     private void codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoFocusLost
-
+        
         String codTxt = codigo.getText().trim();
         if (codTxt.length() > 0) {
             Integer codigo = null;
@@ -325,12 +324,12 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
                 //o código informado é inválido
                 return;
             }
-
+            
             Question q = QD.getQuestion(codigo);
             if (q == null) {
                 JOptionPane.showMessageDialog(this, "Questão não encontrada!");
                 limpar();
-
+                
             } else {
                 setQuestions(q);
             }
