@@ -12,12 +12,12 @@ import java.io.IOException;
  *
  * @author comp1
  */
-public class Menu extends javax.swing.JFrame {
+public class MenuAluno extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public MenuAluno() {
 
         super("Sistema de Cadastros ");
         initComponents();
@@ -62,6 +62,7 @@ public class Menu extends javax.swing.JFrame {
         );
 
         jMenu4.setText("Cadastros");
+        jMenu4.setEnabled(false);
 
         jMenuItem1.setText("Novo Aluno");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +91,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu1.setText("Consultas");
+        jMenu1.setEnabled(false);
 
         jMenuItem6.setText("Consultar Aluno");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -212,13 +214,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-
         this.jDesktopPane1.removeAll();
         NewQuestion teste = new NewQuestion();
         this.jDesktopPane1.add(teste);
         teste.setVisible(true);
-
         try {
             Log.escrever("Acessou o Quiz ");
         } catch (IOException ex) {
@@ -297,20 +296,21 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new MenuAluno().setVisible(true);
             }
         });
     }

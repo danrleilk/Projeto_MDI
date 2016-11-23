@@ -59,12 +59,6 @@ public class ConsultaAluno extends JInternalFrame {
 
         Prof.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações"));
 
-        cnome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnomeActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("E-mail:");
 
         jLabel3.setText("Senha:");
@@ -237,8 +231,15 @@ public class ConsultaAluno extends JInternalFrame {
             novo = true;
         }
         aluno.setCodAluno(Integer.parseInt(ccodigo.getText()));
+        aluno.setNomeAluno(cnome.getText());
+        aluno.setSenhaAluno(csenha.getPassword().toString());
+        aluno.setSexo(csexo.getSelectedItem().toString());
+        aluno.setDataNasc(cDataNasc.getText());
+        aluno.setEmail(cemail.getText());
+        aluno.setTelefone(ctelefone.getText());
+        aluno.setEndereco(cendereco.getText());
+        aluno.setResponsavel(cresp.getText());
 
-        // adcionar o resto dos campos de aluno acima 
         if (novo) {
             try {
                 AD.insert(aluno);
@@ -301,10 +302,6 @@ public class ConsultaAluno extends JInternalFrame {
             }
         }
     }//GEN-LAST:event_ccodigoFocusLost
-
-    private void cnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cnomeActionPerformed
 
     private void atualizarListAluno() {
         ListAluno.setListData(new Vector(AD.getAll()));

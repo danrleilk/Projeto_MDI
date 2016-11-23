@@ -202,12 +202,7 @@ public class Login extends JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 
-    //public LoginDeclarations getLogin() {
-    // NOT REALLY NEEDED ANYMORE !!!!!!!!
-    //  LoginDeclarations login = new LoginDeclarations();
-    // login.setUsusario(Usuario.getText());
-    //   login.getUsuario();
-    //   return login;
+    
     public JTextField getTextoTextField() {
         return Usuario;
     }

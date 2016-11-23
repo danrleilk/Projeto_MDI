@@ -3,12 +3,15 @@ package com.sistema.janelas;
 import com.sistema.bd.ProfessorDAO;
 import com.sistema.bean.Professor;
 import java.util.List;
+import java.util.Vector;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
-public class ConsultarProfessor extends javax.swing.JInternalFrame {
+public class ConsultarProfessor extends JInternalFrame {
 
+    public static String TipoUsuario;
     private ProfessorDAO pd = new ProfessorDAO();
-    private Professor professor = new Professor();
+    private Professor prof = new Professor();
 
     public ConsultarProfessor() {
         initComponents();
@@ -47,12 +50,6 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
         setClosable(true);
 
         Prof.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações"));
-
-        cnome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnomeActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("E-mail:");
 
@@ -227,10 +224,6 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cnomeActionPerformed
-
     private void ccodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ccodigoFocusLost
 
         String codTxt = ccodigo.getText().trim();
@@ -246,8 +239,6 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
             Professor p = pd.getProfessor(codigoProfessor);
             if (p == null) {
                 JOptionPane.showMessageDialog(this, "Professor não encontrado!");
-                limpar();
-
             } else {
                 setProfessor(p);
             }
@@ -281,15 +272,46 @@ public class ConsultarProfessor extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
+        boolean novo = false;
+        if (prof == null) {
+            prof = new Professor();
+            novo = true;
+        }
+        prof.setCodProf(Integer.parseInt(ccodigo.getText()));
+        prof.setNomeProf(cnome.getText());
+        prof.setSenhaProf(csenha.getPassword().toString());
+        prof.setSexo(csexo.getSelectedItem().toString());
+        prof.setDataNasc(cDataNasc.getText());
+        prof.setEmail(cemail.getText());
+        prof.setTelefone(ctelefone.getText());
+        prof.setEndereco(cendereco.getText());
+        prof.setEspecializacao(cespec.getText());
+
+        if (novo) {
+            try {
+                pd.insert(prof);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(),
+                        "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        limpar();
+        atualizarListProfessor();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        // TODO add your handling code here:
-        Professor p = getProfessor();
-        //tratar exceções
-        pd.update(p);
-        limpar();
+        if (TipoUsuario == "Admin") {
+            Professor p = getProfessor();
+            pd.update(p);
+            limpar();
+        } else {
+            btnAtualizar.enable();
+        }
     }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void atualizarListProfessor() {
+        ListProf.setListData(new Vector(pd.getAll()));
+    }
 
     private void limpar() {
         ccodigo.setText("");
