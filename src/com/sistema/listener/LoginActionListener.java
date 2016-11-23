@@ -21,7 +21,7 @@ public class LoginActionListener implements ActionListener {
         if ("entrar".equals(e.getActionCommand())) {
             //salvar
 
-            File arquivo = new File("usuario.txt");
+            /*File arquivo = new File("usuario.txt");
             try (FileWriter fw = new FileWriter(arquivo)) {
                 fw.write(frame.getTextoTextField().getText());
                 fw.flush();
@@ -31,7 +31,7 @@ public class LoginActionListener implements ActionListener {
             } catch (IOException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "não foi possivel salvar seus dados.");
-            }
+            }*/
 
         } else if ("cancelar".equals(e.getActionCommand())) {
 

@@ -10,4 +10,3 @@ INSERT INTO ALUNOS VALUES(2,'Danrlei','[1, 2, 4, 5]','Masculino','1995-12-06','d
 INSERT INTO PROFESSORES VALUES(3,'Leoquina','[2, 1, 4, 5]','Feminino','1200-09-22','leo@hello.com','98657489','Rua da casa dela ','amor')
 INSERT INTO PROFESSORES VALUES(549,'Anderson','[5, 5, 6, 8, 9]','Masculino','1558-06-28','als@gamisl.com','598565656','Rua das Missoes ','Garoto de Programa')
 INSERT INTO QUESTIONS VALUES(0,NULL,'hallo','hello','hella','hell','B')
-INSERT INTO QUESTIONS VALUES(2,'Penso','Think','thought','throught','though','A')
