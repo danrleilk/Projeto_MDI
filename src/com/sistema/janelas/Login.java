@@ -1,12 +1,15 @@
 package com.sistema.janelas;
 
 import com.sistema.listener.LoginActionListener;
+import com.sistema.listener.ProfessorActionListener;
 import java.io.BufferedReader;
 import javax.swing.JFrame;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /*
@@ -44,7 +47,7 @@ public class Login extends JFrame {
         Usuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Login = new javax.swing.JButton();
+        Entrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         Senha = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
@@ -53,7 +56,6 @@ public class Login extends JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(400, 300));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 300));
 
         jcb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Professor", "Aluno" }));
@@ -81,12 +83,12 @@ public class Login extends JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Senha:");
 
-        Login.setText("Entrar");
-        Login.addActionListener(listener);
-        Login.setActionCommand("entrar");
-        Login.addActionListener(new java.awt.event.ActionListener() {
+        Entrar.setText("Entrar");
+        Entrar.addActionListener(listener);
+        Entrar.setActionCommand("entrar");
+        Entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginActionPerformed(evt);
+                EntrarActionPerformed(evt);
             }
         });
 
@@ -126,15 +128,15 @@ public class Login extends JFrame {
                                 .addComponent(jcb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
-                        .addComponent(Login)
+                        .addComponent(Entrar)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Senha, Usuario, jcb_tipo});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Login, jButton1});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Entrar, jButton1});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,14 +155,14 @@ public class Login extends JFrame {
                     .addComponent(jcb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(Login)
+                    .addComponent(Entrar)
                     .addComponent(jButton1))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Senha, Usuario, jcb_tipo});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Login, jButton1});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Entrar, jButton1});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,18 +182,18 @@ public class Login extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
+    private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
         String tipo = jcb_tipo.getSelectedItem().toString();
-        if(jcb_tipo.getSelectedItem().toString()== "Administrador"){
-            if(Usuario.getText() == "Admin" && Senha.getPassword().toString() == "admin" ){
+        if (tipo == "Administrador") {
+            if (Usuario.getText() == "Admin" && Senha.getPassword().toString() == "admin") {
                 Menu m = new Menu();
                 m.setVisible(true);
                 dispose();
             }
-            
+
         }
-        
-    }//GEN-LAST:event_LoginActionPerformed
+
+    }//GEN-LAST:event_EntrarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
@@ -247,7 +249,7 @@ public class Login extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Login;
+    private javax.swing.JButton Entrar;
     private javax.swing.JPasswordField Senha;
     private javax.swing.JTextField Usuario;
     private javax.swing.JButton jButton1;
@@ -258,9 +260,16 @@ public class Login extends JFrame {
     private javax.swing.JComboBox<String> jcb_tipo;
     // End of variables declaration//GEN-END:variables
 
-    
-    public JTextField getTextoTextField() {
+    public JTextField getUser() {
         return Usuario;
+    }
+
+    public JComboBox getComboBox() {
+        return jcb_tipo;
+    }
+
+    public JPasswordField getSenha() {
+        return Senha;
     }
 
 }

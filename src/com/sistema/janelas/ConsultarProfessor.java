@@ -228,15 +228,15 @@ public class ConsultarProfessor extends JInternalFrame {
 
         String codTxt = ccodigo.getText().trim();
         if (codTxt.length() > 0) {
-            Integer codigoProfessor = null;
+            Integer codigo = null;
             try {
-                codigoProfessor = Integer.parseInt(codTxt);
+                codigo = Integer.parseInt(codTxt);
             } catch (NumberFormatException e) {
                 //o código informado é inválido
                 return;
             }
 
-            Professor p = pd.getProfessor(codigoProfessor);
+            Professor p = pd.getProfessorbycode(codigo);
             if (p == null) {
                 JOptionPane.showMessageDialog(this, "Professor não encontrado!");
             } else {
@@ -271,7 +271,6 @@ public class ConsultarProfessor extends JInternalFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
         boolean novo = false;
         if (prof == null) {
             prof = new Professor();

@@ -181,7 +181,7 @@ public class ProfessorDAO {
         return lista;
     }
 
-    public Professor getProfessor(Integer codigo) {
+    public Professor getProfessorbycode(Integer codigo) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -212,6 +212,46 @@ public class ProfessorDAO {
                 p.setTelefone(telefone);
                 p.setEndereco(endereco);
                 p.setEspecializacao(Especializacao);
+
+            }
+        } catch (SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+        return null;
+    }
+
+    public Professor getProfessorbyname(String prof) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection();
+            String sql = "select nome, senha from professores where nome = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, prof);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+                String nome = rs.getString(1);
+                String senha = rs.getString(2);
+
+                Professor p = new Professor();
+                p.setNomeProf(nome);
+                p.setSenhaProf(senha);
 
             }
         } catch (SQLException e) {

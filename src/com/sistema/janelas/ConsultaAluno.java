@@ -292,7 +292,7 @@ public class ConsultaAluno extends JInternalFrame {
                 return;
             }
 
-            Aluno A = AD.getAluno(codigo);
+            Aluno A = AD.getAlunobycode(codigo);
             if (A == null) {
                 JOptionPane.showMessageDialog(this, "Aluno não encontrado!");
                 limpar();

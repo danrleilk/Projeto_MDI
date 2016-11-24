@@ -181,7 +181,7 @@ public class AlunoDAO {
         return lista;
     }
 
-    public Aluno getAluno(Integer codigo) {
+    public Aluno getAlunobycode(Integer codigo) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -211,6 +211,47 @@ public class AlunoDAO {
                 p.setTelefone(telefone);
                 p.setEndereco(endereco);
                 p.setResponsavel(responsavel);
+                return p;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+        return null;
+    }
+
+    public Aluno getAlunobyname(String usuario) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection();
+            String sql = "select * from alunos where nome = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, usuario);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Integer cod = rs.getInt(1);
+                String nome = rs.getString(2);
+                String senha = rs.getString(3);
+
+                Aluno p = new Aluno();
+                p.setCodAluno(cod);
+                p.setNomeAluno(nome);
+                p.setSenhaAluno(senha);
                 return p;
             }
         } catch (SQLException e) {
