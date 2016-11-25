@@ -24,7 +24,9 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
      * Creates new form ConsultaQuestions
      */
     public ConsultaQuestions() {
+        super("Acesso ao BD de Questions");
         initComponents();
+        caregabanco();
     }
 
     /**
@@ -267,7 +269,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         return q;
     }
 
-    private void MostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarTodosActionPerformed
+    public void caregabanco() {
         List<Question> QList = QD.getAll();
         final Question[] strings = new Question[QList.size()];
         int i = 0;
@@ -286,6 +288,11 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
                 return strings[i].getCodigo() + " - " + strings[i].getEnunciado();
             }
         });
+    }
+
+
+    private void MostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarTodosActionPerformed
+        caregabanco();
     }//GEN-LAST:event_MostrarTodosActionPerformed
 
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
@@ -301,7 +308,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
             novo = true;
         }
         Q.setCodigo(Integer.parseInt(codigo.getText()));
-        Q.setEnunciado(enunciado.getText().toString());
+        Q.setEnunciado(enunciado.getText());
         Q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), resposta.getSelectedItem().toString());
 
         if (novo) {

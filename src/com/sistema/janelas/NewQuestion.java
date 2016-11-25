@@ -9,7 +9,6 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 // falta conectar com o banco e caregar o bando dentro das questoes
-
 /**
  * @author Danrlei
  */
@@ -22,6 +21,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
      * Creates new form NewQuestion
      */
     public NewQuestion() {
+        super("Escolha a alternativa equivalemente a palavra em inglês");
         initComponents();
     }
 

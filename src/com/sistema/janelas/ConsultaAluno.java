@@ -16,7 +16,9 @@ public class ConsultaAluno extends JInternalFrame {
      * Creates new form FrameProduto
      */
     public ConsultaAluno() {
+        super("Acesso ao BD de Alunos");
         initComponents();
+        caregabanco();
     }
 
     /**
@@ -128,7 +130,7 @@ public class ConsultaAluno extends JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addGroup(ProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(csexo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ctelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,15 +142,15 @@ public class ConsultaAluno extends JInternalFrame {
                     .addComponent(ccodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(csenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(ProfLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(btnTodos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
+                .addComponent(btnAtualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnExcluir)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ProfLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cnome, csenha});
@@ -192,13 +194,13 @@ public class ConsultaAluno extends JInternalFrame {
                 .addGroup(ProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel7)
                     .addComponent(cresp, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTodos)
                     .addComponent(btnExcluir)
                     .addComponent(btnAtualizar)
                     .addComponent(btnSalvar))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ProfLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cnome, csenha});
@@ -260,24 +262,7 @@ public class ConsultaAluno extends JInternalFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosActionPerformed
-        List<Aluno> professorList = AD.getAll();
-        final Aluno[] strings = new Aluno[professorList.size()];
-        int i = 0;
-
-        for (Aluno p : professorList) {
-            strings[i++] = p;
-        }
-        ListAluno.removeAll();
-        ListAluno.setModel(new javax.swing.AbstractListModel() {
-
-            public int getSize() {
-                return strings.length;
-            }
-
-            public Object getElementAt(int i) {
-                return strings[i].getCodAluno() + " - " + strings[i].getNomeAluno();
-            }
-        });
+        caregabanco();
     }//GEN-LAST:event_btnTodosActionPerformed
 
     private void ccodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ccodigoFocusLost
@@ -303,12 +288,32 @@ public class ConsultaAluno extends JInternalFrame {
         }
     }//GEN-LAST:event_ccodigoFocusLost
 
+    private void caregabanco() {
+        List<Aluno> professorList = AD.getAll();
+        final Aluno[] strings = new Aluno[professorList.size()];
+        int i = 0;
+
+        for (Aluno p : professorList) {
+            strings[i++] = p;
+        }
+        ListAluno.removeAll();
+        ListAluno.setModel(new javax.swing.AbstractListModel() {
+
+            public int getSize() {
+                return strings.length;
+            }
+
+            public Object getElementAt(int i) {
+                return strings[i].getCodAluno() + " - " + strings[i].getNomeAluno();
+            }
+        });
+    }
+
     private void atualizarListAluno() {
         ListAluno.setListData(new Vector(AD.getAll()));
     }
 
     private void limpar() {
-        ccodigo.setText("");
         cnome.setText("");
         csenha.setText("");
         cDataNasc.setText("");
@@ -334,7 +339,8 @@ public class ConsultaAluno extends JInternalFrame {
         Aluno p = new Aluno();
         p.setCodAluno(Integer.valueOf(ccodigo.getText()));
         p.setNomeAluno(cnome.getText());
-        p.setSenhaAluno(csenha.getPassword().toString());
+        String pw = new String(csenha.getPassword().toString());
+        p.setSenhaAluno(pw);
         p.setSexo(csexo.getSelectedItem().toString());
         p.setDataNasc(cDataNasc.getText());
         p.setEmail(cemail.getText());
