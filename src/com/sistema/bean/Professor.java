@@ -14,7 +14,7 @@ public class Professor implements Serializable {
     private String endereco;
     private String datanasc;
 
-    public String getDatanasc() {
+    public String getDataNasc() {
         return datanasc;
     }
 

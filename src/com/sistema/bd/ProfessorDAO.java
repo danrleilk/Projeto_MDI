@@ -62,7 +62,7 @@ public class ProfessorDAO {
             ps.setString(2, prof.getNomeProf());
             ps.setString(3, prof.getSenhaProf());
             ps.setString(4, prof.getSexo());
-            ps.setString(5, prof.getDatanasc());
+            ps.setString(5, prof.getDataNasc());
             ps.setString(6, prof.getEmail());
             ps.setString(7, prof.getTelefone());
             ps.setString(8, prof.getEndereco());
@@ -106,10 +106,17 @@ public class ProfessorDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "update professores set nome = ? where codigo = ?";
+            String sql = "update professores set nome=?,senha=?,sexo=?,data=?,email=?,telefone=?,endereco=?,especializacao=? where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, prof.getNomeProf());
-            ps.setInt(2, prof.getCodProf());
+            ps.setString(2, prof.getSenhaProf());
+            ps.setString(3, prof.getSexo());
+            ps.setString(4, prof.getDataNasc());
+            ps.setString(5, prof.getEmail());
+            ps.setString(6, prof.getTelefone());
+            ps.setString(7, prof.getEndereco());
+            ps.setString(8, prof.getEspecializacao());
+            ps.setInt(9, prof.getCodProf());
             ps.execute();
 
             conn.commit();

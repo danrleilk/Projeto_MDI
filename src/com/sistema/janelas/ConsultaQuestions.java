@@ -12,7 +12,6 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author comp1
  */
 public class ConsultaQuestions extends javax.swing.JInternalFrame {
@@ -299,6 +298,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         Question q = getQuestions();
         QD.update(q);
         limpar();
+        caregabanco();
     }//GEN-LAST:event_AtualizarActionPerformed
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
@@ -321,6 +321,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         }
         limpar();
         atualizarListQuestions();
+        caregabanco();
     }//GEN-LAST:event_SalvarActionPerformed
 
     private void codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoFocusLost
@@ -349,6 +350,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         Question Q = getQuestions();
         QD.delete(Q);
         limpar();
+        caregabanco();
     }//GEN-LAST:event_ApagarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

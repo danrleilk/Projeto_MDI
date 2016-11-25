@@ -56,17 +56,28 @@ public class AlunoDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "insert into alunos (codigo,nome,senha,sexo,data,email,telefone,endereco,responsavel) values(?,?,?,?,?,?,?,?,?)";
+            System.out.println("0");
+
+            String sql = "insert into alunos (codigo,nome,senha,sexo,data,email,telefone,endereco,responsavel) values(?,?,?,?,?,?,?,?,?);";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, al.getCodAluno());
+            System.out.println("1");
             ps.setString(2, al.getNomeAluno());
+            System.out.println("2");
             ps.setString(3, al.getSenhaAluno());
+            System.out.println("3");
             ps.setString(4, al.getSexo());
+            System.out.println("4");
             ps.setString(5, al.getDataNasc());
+            System.out.println("5");
             ps.setString(6, al.getEmail());
+            System.out.println("6");
             ps.setString(7, al.getTelefone());
+            System.out.println("7");
             ps.setString(8, al.getEndereco());
+            System.out.println("8");
             ps.setString(9, al.getResponsavel());
+            System.out.println("9");
 
             ps.execute();
 
@@ -106,10 +117,17 @@ public class AlunoDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "update alunos set nome = ? where codigo = ?";
+            String sql = "update alunos set nome=?,senha=?,sexo=?,data=?,email=?,telefone=?,endereco=?,responsavel=? where codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, al.getNomeAluno());
-            ps.setInt(2, al.getCodAluno());
+            ps.setString(2, al.getSenhaAluno());
+            ps.setString(3, al.getSexo());
+            ps.setString(4, al.getDataNasc());
+            ps.setString(5, al.getEmail());
+            ps.setString(6, al.getTelefone());
+            ps.setString(7, al.getEndereco());
+            ps.setString(8, al.getResponsavel());
+            ps.setInt(9, al.getCodAluno());
             ps.execute();
 
             conn.commit();

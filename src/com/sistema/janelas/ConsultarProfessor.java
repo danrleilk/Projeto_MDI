@@ -2,6 +2,7 @@ package com.sistema.janelas;
 
 import com.sistema.bd.ProfessorDAO;
 import com.sistema.bean.Professor;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JInternalFrame;
@@ -9,8 +10,7 @@ import javax.swing.JOptionPane;
 
 public class ConsultarProfessor extends JInternalFrame {
 
-    public static String TipoUsuario;
-    private ProfessorDAO pd = new ProfessorDAO();
+    private final ProfessorDAO pd = new ProfessorDAO();
     private Professor prof = new Professor();
 
     public ConsultarProfessor() {
@@ -263,7 +263,8 @@ public class ConsultarProfessor extends JInternalFrame {
         }
         prof.setCodProf(Integer.parseInt(ccodigo.getText()));
         prof.setNomeProf(cnome.getText());
-        prof.setSenhaProf(csenha.getPassword().toString());
+        String pw = Arrays.toString(csenha.getPassword());
+        prof.setSenhaProf(pw);
         prof.setSexo(csexo.getSelectedItem().toString());
         prof.setDataNasc(cDataNasc.getText());
         prof.setEmail(cemail.getText());
@@ -281,6 +282,7 @@ public class ConsultarProfessor extends JInternalFrame {
         }
         limpar();
         atualizarListProfessor();
+        caregabanco();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
@@ -330,7 +332,7 @@ public class ConsultarProfessor extends JInternalFrame {
         cnome.setText(p.getNomeProf());
         csenha.setText(p.getSenhaProf());
         csexo.setSelectedItem(p.getSexo());
-        cDataNasc.setText(p.getDatanasc());
+        cDataNasc.setText(p.getDataNasc());
         cemail.setText(p.getEmail());
         ctelefone.setText(p.getTelefone());
         cendereco.setText(p.getEndereco());
