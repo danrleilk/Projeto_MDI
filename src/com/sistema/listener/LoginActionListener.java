@@ -6,6 +6,7 @@ import com.sistema.bean.Aluno;
 import com.sistema.bean.Professor;
 import com.sistema.janelas.Login;
 import com.sistema.janelas.Menu;
+import com.sistema.janelas.MenuAluno;
 import com.sistema.janelas.MenuProfessor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +19,7 @@ import javax.swing.JTextField;
 public class LoginActionListener implements ActionListener {
 
     private final Login frame;
-    private final ProfessorDAO pd = new ProfessorDAO();
+    private ProfessorDAO pd = new ProfessorDAO();
     private final AlunoDAO ad = new AlunoDAO();
 
     public LoginActionListener(Login frame) {
@@ -35,22 +36,22 @@ public class LoginActionListener implements ActionListener {
             String user = usuario.getText();
             String password = Arrays.toString(senha.getPassword());
             String Tipe = Tipo.getSelectedItem().toString();
+            String pw = new String(password);
 
             if (Tipe.equals("Administrador")) {
-                if ("Admin".equals(user) && password.equals("admin")) {
+                if ("Admin".equals(user) || pw.equals("admin")) {
                     Menu menu = new Menu();
                     menu.setVisible(true);
                     frame.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Senha incorreta.");
                 }
-            } else if (Tipe.equals("Professor")) {
+            }
+            // Still doesnt work...wtf
+            if (Tipe.equals("Professor")) {
                 Professor prof = pd.getProfessorbyname(user);
-                System.out.println("prof: " + prof.getNomeProf() + "\tsenha: " + prof.getSenhaProf());
-                System.out.println("prof: " + usuario + "\tsenha: " + senha);
-
                 if (prof.getNomeProf().equals(user)) {
-                    if (prof.getSenhaProf().equals(password)) {
+                    if (prof.getSenhaProf().equals(pw)) {
                         MenuProfessor menu = new MenuProfessor();
                         menu.setVisible(true);
                         frame.dispose();
@@ -60,25 +61,24 @@ public class LoginActionListener implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario não encontrado.");
                 }
-                // segundo else não funciona ... pq?
-                if (Tipe.equals("Aluno")) {
-                    Aluno aluno = ad.getAlunobyname(user);
-                    if (aluno.getNomeAluno().equals(user)) {
-                        if (aluno.getSenhaAluno().equals(password)) {
-
-                            MenuProfessor menu = new MenuProfessor();
-                            menu.setVisible(true);
-                            frame.dispose();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Senha incorreta.");
-                        }
+            }
+            if (Tipe.equals("Aluno")) {
+                Aluno aluno = ad.getAlunobyname(user);
+                if (aluno.getNomeAluno().equals(user)) {
+                    if (aluno.getSenhaAluno().equals(pw)) {
+                        MenuAluno menu = new MenuAluno();
+                        menu.setVisible(true);
+                        frame.dispose();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Usuario não encontrado.");
+                        JOptionPane.showMessageDialog(null, "Senha incorreta.");
                     }
-
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario não encontrado.");
                 }
 
-                /*File arquivo = new File("usuario.txt");
+            }
+
+            /*File arquivo = new File("usuario.txt");
             try (FileWriter fw = new FileWriter(arquivo)) {
                 fw.write(frame.getTextoTextField().getText());
                 fw.flush();
@@ -89,11 +89,9 @@ public class LoginActionListener implements ActionListener {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "não foi possivel salvar seus dados.");
             }*/
-            } else if ("cancelar".equals(e.getActionCommand())) {
-
-                frame.dispose();
-            }
+        } else if ("cancelar".equals(e.getActionCommand())) {
+            frame.dispose();
         }
-
     }
+
 }

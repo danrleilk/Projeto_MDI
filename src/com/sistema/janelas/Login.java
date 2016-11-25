@@ -59,11 +59,6 @@ public class Login extends JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 300));
 
         jcb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Professor", "Aluno" }));
-        jcb_tipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcb_tipoActionPerformed(evt);
-            }
-        });
 
         Usuario.setName("Usuario"); // NOI18N
         File arquivo = new File("usuario.txt");
@@ -183,25 +178,19 @@ public class Login extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-        String tipo = jcb_tipo.getSelectedItem().toString();
+        /*String tipo = jcb_tipo.getSelectedItem().toString();
         if (tipo == "Administrador") {
             if (Usuario.getText() == "Admin" && Senha.getPassword().toString() == "admin") {
                 Menu m = new Menu();
                 m.setVisible(true);
                 dispose();
             }
-
-        }
-
+        }*/
     }//GEN-LAST:event_EntrarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jcb_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_tipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcb_tipoActionPerformed
 
     /**
      * @param args the command line arguments
