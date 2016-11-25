@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 // falta conectar com o banco e caregar o banco dentro das questoes
@@ -19,6 +20,8 @@ public class NewQuestion extends javax.swing.JInternalFrame {
     private String Resposta = new String();
     private Question Q = new Question();
     private QuestionDAO QD = new QuestionDAO();
+    
+    
 
     /**
      * Creates new form NewQuestion
@@ -29,6 +32,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         atualizarListQuestions();
         caregabanco();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -259,6 +259,7 @@ public class ProfessorDAO {
                 Professor p = new Professor();
                 p.setNomeProf(nome);
                 p.setSenhaProf(senha);
+                return p;
 
             }
         } catch (SQLException e) {

@@ -10,6 +10,9 @@ import com.sistema.janelas.MenuAluno;
 import com.sistema.janelas.MenuProfessor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -46,7 +49,7 @@ public class LoginActionListener implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "Senha incorreta.");
                 }
-            }
+            } else
             // Still doesnt work...wtf
             if (Tipe.equals("Professor")) {
                 Professor prof = pd.getProfessorbyname(user);
@@ -78,17 +81,17 @@ public class LoginActionListener implements ActionListener {
 
             }
 
-            /*File arquivo = new File("usuario.txt");
+            File arquivo = new File("usuario.txt");
             try (FileWriter fw = new FileWriter(arquivo)) {
-                fw.write(frame.getTextoTextField().getText());
+                fw.write(frame.getUser().getText());
                 fw.flush();
-                String mensagem = frame.getTextoTextField().getText();
-                Log.escrever(frame.getTextoTextField().getText() + " logou no Sistema! ");
+                String mensagem = frame.getUser().getText();
+                Log.escrever(frame.getUser().getText() + " logou no Sistema! ");
 
             } catch (IOException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "não foi possivel salvar seus dados.");
-            }*/
+            }
         } else if ("cancelar".equals(e.getActionCommand())) {
             frame.dispose();
         }
