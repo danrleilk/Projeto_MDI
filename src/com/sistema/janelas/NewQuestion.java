@@ -6,14 +6,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 
-// falta conectar com o banco e caregar o bando dentro das questoes
+// falta conectar com o banco e caregar o banco dentro das questoes
 /**
  * @author Danrlei
  */
 public class NewQuestion extends javax.swing.JInternalFrame {
 
+    private String Resposta = new String();
     private Question Q = new Question();
     private QuestionDAO QD = new QuestionDAO();
 
@@ -23,6 +26,8 @@ public class NewQuestion extends javax.swing.JInternalFrame {
     public NewQuestion() {
         super("Escolha a alternativa equivalemente a palavra em inglês");
         initComponents();
+        atualizarListQuestions();
+        caregabanco();
     }
 
     /**
@@ -42,6 +47,11 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         B = new javax.swing.JLabel();
         D = new javax.swing.JLabel();
         C = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ListQuestion = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        codigo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -63,6 +73,11 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         jLabel1.setText("Alternativas:");
 
         pular.setText("Pular");
+        pular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pularActionPerformed(evt);
+            }
+        });
 
         A.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         A.setText("A) "+ Q.getA());
@@ -96,39 +111,70 @@ public class NewQuestion extends javax.swing.JInternalFrame {
             }
         });
 
+        ListQuestion.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(ListQuestion);
+
+        jLabel2.setText("Codigo:");
+
+        codigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                codigoFocusLost(evt);
+            }
+        });
+
+        jLabel3.setText("Digite um codigo existe para ler a questão.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(A, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(pular)
+                            .addComponent(jLabel1))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                            .addComponent(pular)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(A, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -138,9 +184,9 @@ public class NewQuestion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addComponent(pular)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -182,6 +228,61 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         limpar();
     }//GEN-LAST:event_DFocusGained
 
+    private void codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoFocusLost
+        String cod = codigo.getText().trim();
+        if (cod.length() > 0) {
+            Integer codigo = null;
+            try {
+                codigo = Integer.parseInt(cod);
+            } catch (NumberFormatException e) {
+                //o código informado é inválido
+                return;
+            }
+            Question q = QD.getQuestion(codigo);
+            if (q == null) {
+                JOptionPane.showMessageDialog(this, "Questão não encontrada!");
+
+            } else {
+                setQuestions(q);
+            }
+        }
+    }//GEN-LAST:event_codigoFocusLost
+
+    private void pularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pularActionPerformed
+        Integer atual;
+        atual = Integer.parseInt(codigo.getText());
+        atual = atual + 1;
+        codigo.setText("" + atual);
+        codigo.setFocusable(closable);
+        //codigo.lostFocus(evt, true);
+
+    }//GEN-LAST:event_pularActionPerformed
+
+    private void atualizarListQuestions() {
+        ListQuestion.setListData(new Vector(QD.getAll()));
+    }
+
+    public void caregabanco() {
+        List<Question> QList = QD.getAll();
+        final Question[] strings = new Question[QList.size()];
+        int i = 0;
+
+        for (Question a : QList) {
+            strings[i++] = a;
+        }
+        ListQuestion.removeAll();
+        ListQuestion.setModel(new javax.swing.AbstractListModel() {
+
+            public int getSize() {
+                return strings.length;
+            }
+
+            public Object getElementAt(int i) {
+                return strings[i].getCodigo() + " - " + strings[i].getEnunciado();
+            }
+        });
+    }
+
     private void limpar() {
         Q = null;
         enunciado.setText("");
@@ -191,14 +292,29 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         D.setText("d)");
     }
 
+    public Question setQuestions(Question q) {
+        enunciado.setText(q.getEnunciado());
+        A.setText(q.getA());
+        B.setText(q.getB());
+        C.setText(q.getC());
+        D.setText(q.getD());
+        Resposta = (q.getResp());
+        return q;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel A;
     private javax.swing.JLabel B;
     private javax.swing.JLabel C;
     private javax.swing.JLabel D;
+    private javax.swing.JList<String> ListQuestion;
+    private javax.swing.JTextField codigo;
     private javax.swing.JTextArea enunciado;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton pular;
     // End of variables declaration//GEN-END:variables
 }
