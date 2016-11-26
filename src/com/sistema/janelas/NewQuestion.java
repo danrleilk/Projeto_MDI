@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
 
 // falta conectar com o banco e caregar o banco dentro das questoes
 /**
@@ -18,10 +19,9 @@ import javax.swing.JOptionPane;
 public class NewQuestion extends javax.swing.JInternalFrame {
 
     private String Resposta = new String();
+    private Integer cod = new Integer(0);
     private Question Q = new Question();
     private QuestionDAO QD = new QuestionDAO();
-    
-    
 
     /**
      * Creates new form NewQuestion
@@ -29,10 +29,8 @@ public class NewQuestion extends javax.swing.JInternalFrame {
     public NewQuestion() {
         super("Escolha a alternativa equivalemente a palavra em inglês");
         initComponents();
-        atualizarListQuestions();
-        caregabanco();
+        readQuestion();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,20 +45,18 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         enunciado = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         pular = new javax.swing.JButton();
-        A = new javax.swing.JLabel();
-        B = new javax.swing.JLabel();
-        D = new javax.swing.JLabel();
-        C = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ListQuestion = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
-        codigo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        A = new javax.swing.JButton();
+        B = new javax.swing.JButton();
+        C = new javax.swing.JButton();
+        D = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
 
+        enunciado.setEditable(false);
         enunciado.setColumns(20);
         enunciado.setRows(5);
+        enunciado.setPreferredSize(new java.awt.Dimension(300, 80));
         /*File arquivo = new File("Questions.txt");
         try (FileReader fr = new FileReader(arquivo)) {
             BufferedReader br = new BufferedReader(fr);
@@ -83,208 +79,164 @@ public class NewQuestion extends javax.swing.JInternalFrame {
             }
         });
 
-        A.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        A.setText("A) "+ Q.getA());
-        A.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                AFocusGained(evt);
+        A.setText("a) "+ Q.getA());
+        A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AActionPerformed(evt);
             }
         });
 
-        B.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        B.setText("B) "+ Q.getB());
-        B.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                BFocusGained(evt);
+        B.setText("b) " + Q.getB());
+        B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BActionPerformed(evt);
             }
         });
 
-        D.setText("D) "+ Q.getD());
-        D.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        D.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                DFocusGained(evt);
+        C.setText("c) "+Q.getC());
+        C.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CActionPerformed(evt);
             }
         });
 
-        C.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        C.setText("C) "+Q.getC());
-        C.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                CFocusGained(evt);
+        D.setText("d) "+Q.getD());
+        D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DActionPerformed(evt);
             }
         });
 
-        ListQuestion.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(ListQuestion);
-
-        jLabel2.setText("Codigo:");
-
-        codigo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                codigoFocusLost(evt);
+        jButton1.setText("Reiniciar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
-
-        jLabel3.setText("Digite um codigo existe para ler a questão.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-                        .addGap(10, 10, 10))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(A, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(pular)
-                            .addComponent(jLabel1))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(A, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(45, 45, 45)
+                            .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pular))
+                            .addGap(45, 45, 45)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton1)
+                                .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {A, B, C, D, jButton1, pular});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(A, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(pular)
-                .addContainerGap())
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pular)
+                    .addComponent(jButton1))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {A, B, C, D, jButton1, pular});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AFocusGained
-        if (("a").equals(Q.getResp().toLowerCase())) {
+    private void pularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pularActionPerformed
+        pularQuestion();
+    }//GEN-LAST:event_pularActionPerformed
+
+    private void AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AActionPerformed
+        if (("a").equals(Resposta)) {
             JOptionPane.showMessageDialog(null, "Resposta Correta.");
         } else {
             JOptionPane.showMessageDialog(null, "Resposta Errada.");
         }
-        limpar();
-    }//GEN-LAST:event_AFocusGained
+        pularQuestion();
+    }//GEN-LAST:event_AActionPerformed
 
-    private void BFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BFocusGained
-        if (("b").equals(Q.getResp().toLowerCase())) {
+    private void BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActionPerformed
+        if (("b").equals(Resposta)) {
             JOptionPane.showMessageDialog(null, "Resposta Correta.");
         } else {
             JOptionPane.showMessageDialog(null, "Resposta Errada.");
         }
-        limpar();
-    }//GEN-LAST:event_BFocusGained
+        pularQuestion();
+    }//GEN-LAST:event_BActionPerformed
 
-    private void CFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CFocusGained
-        if (("c").equals(Q.getResp().toLowerCase())) {
+    private void CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CActionPerformed
+        if (("c").equals(Resposta)) {
             JOptionPane.showMessageDialog(null, "Resposta Correta.");
         } else {
             JOptionPane.showMessageDialog(null, "Resposta Errada.");
         }
-        limpar();
-    }//GEN-LAST:event_CFocusGained
+        pularQuestion();
+    }//GEN-LAST:event_CActionPerformed
 
-    private void DFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DFocusGained
-        if (("d").equals(Q.getResp().toLowerCase())) {
+    private void DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DActionPerformed
+        if (("d").equals(Resposta)) {
             JOptionPane.showMessageDialog(null, "Resposta Correta.");
         } else {
             JOptionPane.showMessageDialog(null, "Resposta Errada.");
         }
-        limpar();
-    }//GEN-LAST:event_DFocusGained
+        pularQuestion();
+    }//GEN-LAST:event_DActionPerformed
 
-    private void codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoFocusLost
-        String cod = codigo.getText().trim();
-        if (cod.length() > 0) {
-            Integer codigo = null;
-            try {
-                codigo = Integer.parseInt(cod);
-            } catch (NumberFormatException e) {
-                //o código informado é inválido
-                return;
-            }
-            Question q = QD.getQuestion(codigo);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int resposta = JOptionPane.showConfirmDialog(null, "Você deseja sair do sistema?", null, YES_NO_OPTION);
+        if (resposta == JOptionPane.YES_OPTION) {
+            cod = 0;
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void pularQuestion() {
+        cod = cod + 1;
+        Question q = QD.getQuestion(cod);
+        if (q == null) {
+            JOptionPane.showMessageDialog(this, "Questão não encontrada!");
+            limpar();
+        } else {
+            setQuestions(q);
+        }
+    }
+
+    private void readQuestion() {
+        if (cod != null) {
+            Question q = QD.getQuestion(cod);
             if (q == null) {
                 JOptionPane.showMessageDialog(this, "Questão não encontrada!");
-
+                limpar();
             } else {
                 setQuestions(q);
             }
         }
-    }//GEN-LAST:event_codigoFocusLost
-
-    private void pularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pularActionPerformed
-        Integer atual;
-        atual = Integer.parseInt(codigo.getText());
-        atual = atual + 1;
-        codigo.setText("" + atual);
-        codigo.setFocusable(closable);
-        //codigo.lostFocus(evt, true);
-
-    }//GEN-LAST:event_pularActionPerformed
-
-    private void atualizarListQuestions() {
-        ListQuestion.setListData(new Vector(QD.getAll()));
-    }
-
-    public void caregabanco() {
-        List<Question> QList = QD.getAll();
-        final Question[] strings = new Question[QList.size()];
-        int i = 0;
-
-        for (Question a : QList) {
-            strings[i++] = a;
-        }
-        ListQuestion.removeAll();
-        ListQuestion.setModel(new javax.swing.AbstractListModel() {
-
-            public int getSize() {
-                return strings.length;
-            }
-
-            public Object getElementAt(int i) {
-                return strings[i].getCodigo() + " - " + strings[i].getEnunciado();
-            }
-        });
     }
 
     private void limpar() {
@@ -302,23 +254,19 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         B.setText(q.getB());
         C.setText(q.getC());
         D.setText(q.getD());
-        Resposta = (q.getResp());
+        Resposta = (q.getResp().toLowerCase());
         return q;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel A;
-    private javax.swing.JLabel B;
-    private javax.swing.JLabel C;
-    private javax.swing.JLabel D;
-    private javax.swing.JList<String> ListQuestion;
-    private javax.swing.JTextField codigo;
+    private javax.swing.JButton A;
+    private javax.swing.JButton B;
+    private javax.swing.JButton C;
+    private javax.swing.JButton D;
     private javax.swing.JTextArea enunciado;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton pular;
     // End of variables declaration//GEN-END:variables
 }
