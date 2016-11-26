@@ -17,7 +17,7 @@ import static javax.swing.JOptionPane.YES_NO_OPTION;
  * @author Danrlei
  */
 public class NewQuestion extends javax.swing.JInternalFrame {
-
+    
     private String Resposta = new String();
     private Integer cod = new Integer(0);
     private Question Q = new Question();
@@ -27,7 +27,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
      * Creates new form NewQuestion
      */
     public NewQuestion() {
-        super("Escolha a alternativa equivalemente a palavra em inglês");
+        super("Escolha o equivalemente a palavra");
         initComponents();
         readQuestion();
     }
@@ -50,6 +50,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         C = new javax.swing.JButton();
         D = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        questao = new javax.swing.JTextField();
 
         setClosable(true);
 
@@ -114,31 +115,40 @@ public class NewQuestion extends javax.swing.JInternalFrame {
             }
         });
 
+        questao.setEditable(false);
+        questao.setEnabled(false);
+        questao.setText("Questão Numero: "+ Q.getCodigo());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(A, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(45, 45, 45)
-                            .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(pular))
-                            .addGap(45, 45, 45)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton1)
-                                .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(A, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(45, 45, 45)
+                                    .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(pular))
+                                    .addGap(45, 45, 45)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton1)
+                                        .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(questao, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {A, B, C, D, jButton1, pular});
@@ -146,8 +156,11 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(questao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -161,7 +174,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pular)
                     .addComponent(jButton1))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {A, B, C, D, jButton1, pular});
@@ -213,12 +226,14 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         int resposta = JOptionPane.showConfirmDialog(null, "Você deseja sair do sistema?", null, YES_NO_OPTION);
         if (resposta == JOptionPane.YES_OPTION) {
             cod = 0;
+            readQuestion();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void pularQuestion() {
         cod = cod + 1;
         Question q = QD.getQuestion(cod);
+        questao.setText("Questão Numero: " + cod);
         if (q == null) {
             JOptionPane.showMessageDialog(this, "Questão não encontrada!");
             limpar();
@@ -226,7 +241,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
             setQuestions(q);
         }
     }
-
+    
     private void readQuestion() {
         if (cod != null) {
             Question q = QD.getQuestion(cod);
@@ -238,7 +253,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     private void limpar() {
         Q = null;
         enunciado.setText("");
@@ -247,7 +262,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         C.setText("c)");
         D.setText("d)");
     }
-
+    
     public Question setQuestions(Question q) {
         enunciado.setText(q.getEnunciado());
         A.setText(q.getA());
@@ -268,5 +283,6 @@ public class NewQuestion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton pular;
+    private javax.swing.JTextField questao;
     // End of variables declaration//GEN-END:variables
 }
