@@ -48,7 +48,7 @@ public class ConsultaProfessor extends javax.swing.JInternalFrame {
         cemail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        csexo = new javax.swing.JComboBox<>();
+        csexo = new javax.swing.JComboBox<String>();
         cendereco = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -65,7 +65,9 @@ public class ConsultaProfessor extends javax.swing.JInternalFrame {
         cDataNasc = new javax.swing.JFormattedTextField();
         ctelefone = new javax.swing.JFormattedTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        ListProf = new javax.swing.JList<>();
+        ListProf = new javax.swing.JList<String>();
+
+        setClosable(true);
 
         Prof.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações"));
 
@@ -83,7 +85,7 @@ public class ConsultaProfessor extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Data Nasc.:");
 
-        csexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
+        csexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Masculino", "Feminino" }));
 
         jLabel5.setText("Telefone:");
 
@@ -251,10 +253,10 @@ public class ConsultaProfessor extends javax.swing.JInternalFrame {
 
         ProfLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cDataNasc, ccodigo, cemail, cendereco, cespec, cnome, csenha, csexo, ctelefone});
 
-        ListProf.setModel(new javax.swing.AbstractListModel<String>() {
+        ListProf.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(ListProf);
 

@@ -21,7 +21,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class LoginAL implements ActionListener {
-
+    public static String Nome;
     private final Login frame;
     private ProfessorDAO pd = new ProfessorDAO();
     private final AlunoDAO ad = new AlunoDAO();
@@ -33,7 +33,7 @@ public class LoginAL implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if ("entrar".equals(e.getActionCommand())) {
-
+            
             JComboBox Tipo = frame.getComboBox();
             JTextField usuario = frame.getUser();
             JPasswordField senha = frame.getSenha();
@@ -41,17 +41,22 @@ public class LoginAL implements ActionListener {
             String password = Arrays.toString(senha.getPassword());
             String Tipe = Tipo.getSelectedItem().toString();
             String pw = new String(password);
-
+            Nome = user;
+            
             if (Tipe.equals("Administrador")) {
-                if ("Admin".equals(user) || pw.equals("admin")) {
-                    Menu menu = new Menu();
-                    menu.setVisible(true);
-                    frame.dispose();
+                Professor prof = pd.getProfessorbyname(user);
+                if (prof.getNomeProf().equals(user)) {
+                    if (prof.getSenhaProf().equals(pw)) {
+                        Menu menu = new Menu();
+                        menu.setVisible(true);
+                        frame.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Senha incorreta.");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Senha incorreta.");
-                }
-            } else // Still doesnt work...wtf
-            {
+                    JOptionPane.showMessageDialog(null, "Usuario não encontrado.");
+                }                
+            } else {
                 if (Tipe.equals("Professor")) {
                     Professor prof = pd.getProfessorbyname(user);
                     if (prof.getNomeProf().equals(user)) {

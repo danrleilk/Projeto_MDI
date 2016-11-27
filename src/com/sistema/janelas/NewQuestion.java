@@ -2,6 +2,7 @@ package com.sistema.janelas;
 
 import com.sistema.bd.QuestionDAO;
 import com.sistema.bean.Question;
+import com.sistema.listener.LoginAL;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -17,7 +18,7 @@ import static javax.swing.JOptionPane.YES_NO_OPTION;
  * @author Danrlei
  */
 public class NewQuestion extends javax.swing.JInternalFrame {
-    
+    private int Pontos = 0;
     private String Resposta = new String();
     private Integer cod = new Integer(0);
     private Question Q = new Question();
@@ -188,6 +189,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
 
     private void AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AActionPerformed
         if (("a").equals(Resposta)) {
+            Pontos++;
             JOptionPane.showMessageDialog(null, "Resposta Correta.");
         } else {
             JOptionPane.showMessageDialog(null, "Resposta Errada.");
@@ -197,6 +199,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
 
     private void BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActionPerformed
         if (("b").equals(Resposta)) {
+            Pontos++;
             JOptionPane.showMessageDialog(null, "Resposta Correta.");
         } else {
             JOptionPane.showMessageDialog(null, "Resposta Errada.");
@@ -206,6 +209,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
 
     private void CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CActionPerformed
         if (("c").equals(Resposta)) {
+            Pontos++;
             JOptionPane.showMessageDialog(null, "Resposta Correta.");
         } else {
             JOptionPane.showMessageDialog(null, "Resposta Errada.");
@@ -215,6 +219,7 @@ public class NewQuestion extends javax.swing.JInternalFrame {
 
     private void DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DActionPerformed
         if (("d").equals(Resposta)) {
+            Pontos++;
             JOptionPane.showMessageDialog(null, "Resposta Correta.");
         } else {
             JOptionPane.showMessageDialog(null, "Resposta Errada.");
@@ -235,8 +240,10 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         Question q = QD.getQuestion(cod);
         questao.setText("Questão Numero: " + cod);
         if (q == null) {
-            JOptionPane.showMessageDialog(this, "Questão não encontrada!");
-            limpar();
+            LoginAL la =new LoginAL(null);
+                String Nome = la.Nome;
+            JOptionPane.showMessageDialog(this, "Game Over! " + Nome + " fez " + Pontos + "pontos!");
+            dispose();
         } else {
             setQuestions(q);
         }
@@ -246,7 +253,9 @@ public class NewQuestion extends javax.swing.JInternalFrame {
         if (cod != null) {
             Question q = QD.getQuestion(cod);
             if (q == null) {
-                JOptionPane.showMessageDialog(this, "Questão não encontrada!");
+                LoginAL la =new LoginAL(null);
+                String Nome = la.Nome;
+                JOptionPane.showMessageDialog(this, "Game Over! " + Nome + " fez " + Pontos + "pontos!");
                 limpar();
             } else {
                 setQuestions(q);
