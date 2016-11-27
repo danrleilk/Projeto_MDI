@@ -25,7 +25,7 @@ public class Question {
         this.d = d;
     }
 
-    public int getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
