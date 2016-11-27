@@ -121,22 +121,37 @@ public class ConsultaQuestion extends javax.swing.JInternalFrame {
         });
 
         btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(listener);
-        btnSalvar.setActionCommand("salvar");
-        caregabanco();
-        limpar();
+        //btnSalvar.addActionListener(listener);
+        //btnSalvar.setActionCommand("salvar");
+        //caregabanco();
+        //limpar();
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         Atualizar.setText("Atualizar");
-        Atualizar.addActionListener(listener);
-        Atualizar.setActionCommand("atualizar");
-        caregabanco();
-        limpar();
+        //Atualizar.addActionListener(listener);
+        //Atualizar.setActionCommand("atualizar");
+        //caregabanco();
+        //limpar();
+        Atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtualizarActionPerformed(evt);
+            }
+        });
 
         Apagar.setText("Apagar");
-        Apagar.addActionListener(listener);
-        Apagar.setActionCommand("excluir");
-        caregabanco();
-        limpar();
+        //Apagar.addActionListener(listener);
+        //Apagar.setActionCommand("excluir");
+        //caregabanco();
+        //limpar();
+        Apagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApagarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Codigo :");
 
@@ -271,27 +286,10 @@ public class ConsultaQuestion extends javax.swing.JInternalFrame {
         return q;
     }
 
-    public Question getQuestion() throws Excecoes {
-
-        Integer last = dao.getLastQuestion();
-        Integer next = last + 1;
-        q.setCodigo(next);
-
-        if (valida.validaArea(enunciado)) {
-            q.setEnunciado(enunciado.getText());
-        } else {
-            throw new Excecoes("Campo Enunciado é obrigatório!");
-        }
-        if (valida.validaVazio(a) && valida.validaVazio(b) && valida.validaVazio(c) && valida.validaVazio(d)) {
-            q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText());
-        } else {
-            throw new Excecoes("Campos de alternativas são Obrigatórios!");
-        }
-        if (r.getSelectedIndex() != 0) {
-            q.setResp(r.getSelectedItem().toString());
-        } else {
-            throw new Excecoes("Campo de Resposta é Obrigatórios!");
-        }
+    public Question getQuestion(String estado) {
+        q.setCodigo(Integer.parseInt(codigo.getText()));
+        q.setEnunciado(enunciado.getText());
+        q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), r.getSelectedItem().toString());
         return q;
     }
 
@@ -348,6 +346,44 @@ public class ConsultaQuestion extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_codigoKeyTyped
+
+    private void ApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarActionPerformed
+        Question q = getQuestion("excluir");
+        dao.delete(q);
+        JOptionPane.showMessageDialog(null, "Excluido com sucesso.");
+        limpar();
+        caregabanco();
+    }//GEN-LAST:event_ApagarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        boolean novo = false;
+        if (q == null) {
+            q = new Question();
+            novo = true;
+        }
+        q.setCodigo(Integer.parseInt(codigo.getText()));
+        q.setEnunciado(enunciado.getText());
+        q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), r.getSelectedItem().toString());
+        if (novo) {
+            try {
+                dao.insert(q);
+                JOptionPane.showMessageDialog(null, "Salvo com sucesso.");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(),
+                        "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        limpar();
+        caregabanco();
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
+        Question question = getQuestion("atualizar");
+        dao.update(question);
+        JOptionPane.showMessageDialog(null, "Atualizado com sucesso.");
+        limpar();
+        caregabanco();
+    }//GEN-LAST:event_AtualizarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Apagar;

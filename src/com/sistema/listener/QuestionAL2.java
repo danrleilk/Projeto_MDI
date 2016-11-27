@@ -12,7 +12,6 @@ import excecoes.Excecoes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.YES_NO_OPTION;
 
 /**
  * @author Danrlei
@@ -33,15 +32,10 @@ public class QuestionAL2 implements ActionListener {
         String gac = e.getActionCommand();
 
         if ("salvar".equals(gac)) {
+            q = frame.getQuestion(gac);
             try {
-                q = frame.getQuestion();
-                try {
-                    dao.insert(q);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                    return;
-                }
-            } catch (Excecoes ex) {
+                dao.insert(q);
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
                 return;
             }
@@ -49,15 +43,10 @@ public class QuestionAL2 implements ActionListener {
         }
 
         if ("atualizar".equals(gac)) {
+            q = frame.getQuestion(gac);
             try {
-                q = frame.getQuestion();
-                try {
-                    dao.update(q);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                    return;
-                }
-            } catch (Excecoes ex) {
+                dao.update(q);
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
                 return;
             }
@@ -65,15 +54,10 @@ public class QuestionAL2 implements ActionListener {
         }
 
         if ("excluir".equals(gac)) {
+            q = frame.getQuestion(gac);
             try {
-                q = frame.getQuestion();
-                try {
-                    dao.delete(q);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                    return;
-                }
-            } catch (Excecoes ex) {
+                dao.delete(q);
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
                 return;
             }

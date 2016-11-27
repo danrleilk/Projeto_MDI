@@ -280,24 +280,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
+          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btnSalvar.addActionListener(listener);&#xa;btnSalvar.setActionCommand(&quot;salvar&quot;);&#xa;caregabanco();&#xa;limpar();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//btnSalvar.addActionListener(listener);&#xa;//btnSalvar.setActionCommand(&quot;salvar&quot;);&#xa;//caregabanco();&#xa;//limpar();"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="Atualizar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Atualizar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtualizarActionPerformed"/>
+          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Atualizar.addActionListener(listener);&#xa;Atualizar.setActionCommand(&quot;atualizar&quot;);&#xa;caregabanco();&#xa;limpar();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//Atualizar.addActionListener(listener);&#xa;//Atualizar.setActionCommand(&quot;atualizar&quot;);&#xa;//caregabanco();&#xa;//limpar();"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="Apagar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Apagar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ApagarActionPerformed"/>
+          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Apagar.addActionListener(listener);&#xa;Apagar.setActionCommand(&quot;excluir&quot;);&#xa;caregabanco();&#xa;limpar();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//Apagar.addActionListener(listener);&#xa;//Apagar.setActionCommand(&quot;excluir&quot;);&#xa;//caregabanco();&#xa;//limpar();"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">

@@ -2,7 +2,7 @@ package com.sistema.bean;
 
 public class Question {
 
-    private int codigo;
+    private Integer codigo;
     private String enunciado;
     private String a, b, c, d, resp;
 
@@ -29,7 +29,7 @@ public class Question {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
