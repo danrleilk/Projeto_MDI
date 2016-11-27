@@ -16,16 +16,17 @@ import java.io.IOException;
 import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginActionListener implements ActionListener {
+public class LoginAL implements ActionListener {
 
     private final Login frame;
     private ProfessorDAO pd = new ProfessorDAO();
     private final AlunoDAO ad = new AlunoDAO();
 
-    public LoginActionListener(Login frame) {
+    public LoginAL(Login frame) {
         this.frame = frame;
     }
 
@@ -49,20 +50,21 @@ public class LoginActionListener implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "Senha incorreta.");
                 }
-            } else
-            // Still doesnt work...wtf
-            if (Tipe.equals("Professor")) {
-                Professor prof = pd.getProfessorbyname(user);
-                if (prof.getNomeProf().equals(user)) {
-                    if (prof.getSenhaProf().equals(pw)) {
-                        MenuProfessor menu = new MenuProfessor();
-                        menu.setVisible(true);
-                        frame.dispose();
+            } else // Still doesnt work...wtf
+            {
+                if (Tipe.equals("Professor")) {
+                    Professor prof = pd.getProfessorbyname(user);
+                    if (prof.getNomeProf().equals(user)) {
+                        if (prof.getSenhaProf().equals(pw)) {
+                            MenuProfessor menu = new MenuProfessor();
+                            menu.setVisible(true);
+                            frame.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Senha incorreta.");
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Senha incorreta.");
+                        JOptionPane.showMessageDialog(null, "Usuario não encontrado.");
                     }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Usuario não encontrado.");
                 }
             }
             if (Tipe.equals("Aluno")) {
@@ -93,7 +95,10 @@ public class LoginActionListener implements ActionListener {
                 JOptionPane.showMessageDialog(null, "não foi possivel salvar seus dados.");
             }
         } else if ("cancelar".equals(e.getActionCommand())) {
-            frame.dispose();
+            int resposta = JOptionPane.showConfirmDialog(null, "Você deseja cancelar esta operação?", null, YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                frame.dispose();
+            }
         }
     }
 

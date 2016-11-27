@@ -26,41 +26,38 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="jButton1" linkSize="5" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton2" linkSize="5" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="ctelefone" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cemail" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cresponsavel" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cendereco" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cDataNasc" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cnome" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="ccodigo" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="csexo" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="csenha" linkSize="2" alignment="2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="jButton1" linkSize="5" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton2" linkSize="5" min="-2" pref="100" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel4" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel5" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel6" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel7" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel8" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel9" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="cnome" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="ccodigo" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="csexo" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="cemail" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="cDataNasc" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="cresponsavel" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="cendereco" linkSize="2" alignment="2" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="csenha" linkSize="2" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="ctelefone" linkSize="2" alignment="2" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,9 +85,9 @@
                   <Component id="jLabel8" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="cDataNasc" linkSize="3" alignment="2" min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="jLabel9" linkSize="1" alignment="2" min="-2" pref="14" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel9" linkSize="1" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                  <Component id="cDataNasc" linkSize="3" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
@@ -98,9 +95,9 @@
                   <Component id="jLabel4" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="ctelefone" linkSize="3" alignment="2" min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="jLabel5" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel5" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ctelefone" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
@@ -117,7 +114,7 @@
                   <Component id="jButton2" linkSize="6" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" linkSize="6" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -147,6 +144,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cnome">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cnomeKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -154,13 +154,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ccodigo">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ccodigoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="csexo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Masculino"/>
-            <StringItem index="1" value="Feminino"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Selecione"/>
+            <StringItem index="1" value="Masculino"/>
+            <StringItem index="2" value="Feminino"/>
           </StringArray>
         </Property>
       </Properties>
@@ -172,8 +176,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="E-mail:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="ctelefone">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -188,6 +190,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cresponsavel">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cresponsavelKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -201,8 +206,6 @@
         <Property name="text" type="java.lang.String" value="Data Nasc.:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="cDataNasc">
-    </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
@@ -212,6 +215,24 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JPasswordField" name="csenha">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="ctelefone">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="(##)#####-####" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ctelefoneKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="cDataNasc">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cDataNascKeyTyped"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xd;&#xa;            cDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;)));&#xd;&#xa;        } catch (java.text.ParseException ex) {&#xd;&#xa;            ex.printStackTrace();&#xd;&#xa;        }"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

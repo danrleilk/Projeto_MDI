@@ -1,43 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sistema.listener;
 
-import com.sistema.bd.QuestionDAO;
-import com.sistema.bean.Question;
-import com.sistema.janelas.CadQuestion;
+import com.sistema.bd.AlunoDAO;
+import com.sistema.bean.Aluno;
+
+import com.sistema.janelas.CadAluno;
 import excecoes.Excecoes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 
-/**
- * @author Danrlei
- */
-public class QuestionAL implements ActionListener {
+public class AlunoAL implements ActionListener {
 
-    private final CadQuestion frame;
-    private QuestionDAO dao = new QuestionDAO();
-    private Question q = new Question();
+    private final CadAluno frame;
+    private AlunoDAO dao = new AlunoDAO();
+    private Aluno al = new Aluno();
 
-    public QuestionAL(CadQuestion frame) {
+    public AlunoAL(CadAluno frame) {
         this.frame = frame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         String gac = e.getActionCommand();
-
         if ("cadastrar".equals(gac)) {
             try {
-                q = frame.getQuestion();
+                al = frame.getAluno();
                 try {
-                    dao.insert(q);
+                    dao.insert(al);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                     return;
@@ -49,7 +39,6 @@ public class QuestionAL implements ActionListener {
             JOptionPane.showMessageDialog(null, "Salvo com sucesso");
             frame.dispose();
         }
-
         if ("cancelar".equals(gac)) {
             int resposta = JOptionPane.showConfirmDialog(null, "Você deseja cancelar esta operação?", null, YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
@@ -57,4 +46,5 @@ public class QuestionAL implements ActionListener {
             }
         }
     }
+
 }

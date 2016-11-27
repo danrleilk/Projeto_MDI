@@ -56,28 +56,18 @@ public class AlunoDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            System.out.println("0");
 
             String sql = "insert into alunos (codigo,nome,senha,sexo,data,email,telefone,endereco,responsavel) values(?,?,?,?,?,?,?,?,?);";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, al.getCodAluno());
-            System.out.println("1");
             ps.setString(2, al.getNomeAluno());
-            System.out.println("2");
             ps.setString(3, al.getSenhaAluno());
-            System.out.println("3");
             ps.setString(4, al.getSexo());
-            System.out.println("4");
             ps.setString(5, al.getDataNasc());
-            System.out.println("5");
             ps.setString(6, al.getEmail());
-            System.out.println("6");
             ps.setString(7, al.getTelefone());
-            System.out.println("7");
             ps.setString(8, al.getEndereco());
-            System.out.println("8");
             ps.setString(9, al.getResponsavel());
-            System.out.println("9");
 
             ps.execute();
 

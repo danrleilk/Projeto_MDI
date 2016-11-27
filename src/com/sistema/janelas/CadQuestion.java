@@ -5,9 +5,12 @@
  */
 package com.sistema.janelas;
 
+import com.sistema.bd.QuestionDAO;
 import com.sistema.bean.Question;
 import com.sistema.listener.QuestionAL;
+import excecoes.Excecoes;
 import javax.swing.JInternalFrame;
+import validacao.Valida;
 
 /**
  *
@@ -15,12 +18,32 @@ import javax.swing.JInternalFrame;
  */
 public class CadQuestion extends JInternalFrame {
 
+    private QuestionDAO dao = new QuestionDAO();
     private QuestionAL listener = new QuestionAL(this);
+    private Question q = new Question();
+    private Valida valida = new Valida();
 
-    public Question getQuestion() {
-        Question q = new Question();
-        q.setEnunciado(enunciado.getText());
-        q.setOpcoes(a.getText().toString(), b.getText().toString(), c.getText().toString(), d.getText().toString(), r.getSelectedItem().toString());
+    public Question getQuestion() throws Excecoes {
+
+        int last = dao.getLastQuestion();
+        int next = last + 1;
+        q.setCodigo(next);
+
+        if (valida.validaArea(enunciado)) {
+            q.setEnunciado(enunciado.getText());
+        } else {
+            throw new Excecoes("Campo Enunciado é obrigatório!");
+        }
+        if (valida.validaVazio(a) && valida.validaVazio(b) && valida.validaVazio(c) && valida.validaVazio(d)) {
+            q.setOpcoes(a.getText().toString(), b.getText().toString(), c.getText().toString(), d.getText().toString());
+        } else {
+            throw new Excecoes("Campos de alternativas são Obrigatórios!");
+        }
+        if (r.getSelectedIndex() != 0) {
+            q.setResp(r.getSelectedItem().toString());
+        } else {
+            throw new Excecoes("Campo de Resposta é Obrigatórios!");
+        }
         return q;
     }
 
@@ -90,7 +113,7 @@ public class CadQuestion extends JInternalFrame {
 
         jLabel9.setText("Resposta:");
 
-        r.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D" }));
+        r.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "A", "B", "C", "D" }));
         r.setAutoscrolls(true);
 
         cancelar.setText("Cancelar");

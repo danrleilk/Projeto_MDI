@@ -18,6 +18,13 @@ public class Question {
         this.resp = resp;
     }
 
+    public void setOpcoes(String a, String b, String c, String d) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+    }
+
     public int getCodigo() {
         return codigo;
     }

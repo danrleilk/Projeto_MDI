@@ -6,7 +6,10 @@ CREATE USER SA PASSWORD ""
 GRANT DBA TO SA
 SET WRITE_DELAY 10
 SET SCHEMA PUBLIC
+INSERT INTO ALUNOS VALUES(0,'ads','[s, a, d]','Masculino','asd','sad','saf','fds','ddfs')
+INSERT INTO ALUNOS VALUES(1,'1','[1]','Masculino','12/55/5645','1','1','1','1')
 INSERT INTO ALUNOS VALUES(2,'Danrlei','[1, 2, 4, 5]','Masculino','1995-12-06','dan@manga.com','969696666','Sapolandia','why should i have one?')
+INSERT INTO PROFESSORES VALUES(0,'testando','[0]','Feminino','01/01/0111','16','123','456','564')
 INSERT INTO PROFESSORES VALUES(3,'Leoquina','[2, 1, 4, 5]','Feminino','1200-09-22','leo@hello.com','98657489','Rua da casa dela ','amor')
 INSERT INTO PROFESSORES VALUES(549,'Anderson','[5, 5, 6, 8, 9]','Masculino','1558-06-28','als@gamisl.com','598565656','Rua das Missoes ','Garoto de Programa')
 INSERT INTO QUESTIONS VALUES(0,'Oi','Halo','Hello','Hallow','Hell','B')

@@ -229,4 +229,37 @@ public class QuestionDAO {
         return null;
     }
 
+    public int getLastQuestion() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        Integer number = new Integer(0);
+        try {
+            conn = Conexao.getConnection();
+            String sql = "SELECT codigo FROM Questions ORDER BY codigo DESC LIMIT 1;";
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                number = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+        return number;
+    }
+
 }

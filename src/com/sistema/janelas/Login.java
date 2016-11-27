@@ -1,7 +1,7 @@
 package com.sistema.janelas;
 
-import com.sistema.listener.LoginActionListener;
-import com.sistema.listener.ProfessorActionListener;
+import com.sistema.listener.LoginAL;
+import com.sistema.listener.ProfessorAL;
 import java.io.BufferedReader;
 import javax.swing.JFrame;
 import java.io.File;
@@ -23,7 +23,7 @@ import javax.swing.JTextField;
  */
 public class Login extends JFrame {
 
-    private LoginActionListener listener = new LoginActionListener(this);
+    private LoginAL listener = new LoginAL(this);
 
     /**
      * Creates new form LoginFrame
