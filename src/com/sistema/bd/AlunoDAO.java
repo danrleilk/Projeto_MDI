@@ -209,17 +209,17 @@ public class AlunoDAO {
                 String endereco = rs.getString(8);
                 String responsavel = rs.getString(9);
 
-                Aluno p = new Aluno();
-                p.setCodAluno(cod);
-                p.setNomeAluno(nome);
-                p.setSenhaAluno(senha);
-                p.setSexo(sexo);
-                p.setDataNasc(datanasc);
-                p.setEmail(email);
-                p.setTelefone(telefone);
-                p.setEndereco(endereco);
-                p.setResponsavel(responsavel);
-                return p;
+                Aluno a = new Aluno();
+                a.setCodAluno(cod);
+                a.setNomeAluno(nome);
+                a.setSenhaAluno(senha);
+                a.setSexo(sexo);
+                a.setDataNasc(datanasc);
+                a.setEmail(email);
+                a.setTelefone(telefone);
+                a.setEndereco(endereco);
+                a.setResponsavel(responsavel);
+                return a;
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -247,20 +247,18 @@ public class AlunoDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select * from alunos where nome = ?";
+            String sql = "select nome,senha from alunos where nome = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, usuario);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Integer cod = rs.getInt(1);
-                String nome = rs.getString(2);
-                String senha = rs.getString(3);
+                String nome = rs.getString(1);
+                String senha = rs.getString(2);
 
-                Aluno p = new Aluno();
-                p.setCodAluno(cod);
-                p.setNomeAluno(nome);
-                p.setSenhaAluno(senha);
-                return p;
+                Aluno a = new Aluno();
+                a.setNomeAluno(nome);
+                a.setSenhaAluno(senha);
+                return a;
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());

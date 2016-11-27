@@ -207,7 +207,7 @@ public class ProfessorDAO {
                 String email = rs.getString(6);
                 String telefone = rs.getString(7);
                 String endereco = rs.getString(8);
-                String Especializacao = rs.getString(9);
+                String especializacao = rs.getString(9);
 
                 Professor p = new Professor();
                 p.setCodProf(cod);
@@ -218,7 +218,8 @@ public class ProfessorDAO {
                 p.setEmail(email);
                 p.setTelefone(telefone);
                 p.setEndereco(endereco);
-                p.setEspecializacao(Especializacao);
+                p.setEspecializacao(especializacao);
+                return p;
 
             }
         } catch (SQLException e) {

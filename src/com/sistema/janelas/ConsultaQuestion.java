@@ -1,24 +1,27 @@
-
 package com.sistema.janelas;
 
 import com.sistema.bd.QuestionDAO;
 import com.sistema.bean.Question;
+import com.sistema.listener.QuestionAL2;
+import excecoes.Excecoes;
 import java.util.List;
-import java.util.Vector;
 import javax.swing.JOptionPane;
+import validacao.Valida;
 
 /**
  * @author comp1
  */
-public class ConsultaQuestions extends javax.swing.JInternalFrame {
+public class ConsultaQuestion extends javax.swing.JInternalFrame {
 
-    private Question Q = new Question();
-    private QuestionDAO QD = new QuestionDAO();
+    private QuestionAL2 listener = new QuestionAL2(this);
+    private Question q = new Question();
+    private QuestionDAO dao = new QuestionDAO();
+    private Valida valida = new Valida();
 
     /**
      * Creates new form ConsultaQuestions
      */
-    public ConsultaQuestions() {
+    public ConsultaQuestion() {
         super("Acesso ao BD de Questions");
         initComponents();
         caregabanco();
@@ -33,6 +36,8 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListQuestion = new javax.swing.JList<>();
@@ -49,13 +54,26 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         b = new javax.swing.JTextField();
         c = new javax.swing.JTextField();
         d = new javax.swing.JTextField();
-        resposta = new javax.swing.JComboBox<>();
+        r = new javax.swing.JComboBox<>();
         MostrarTodos = new javax.swing.JButton();
-        Salvar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         Atualizar = new javax.swing.JButton();
         Apagar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         codigo = new javax.swing.JTextField();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
 
         setClosable(true);
 
@@ -93,7 +111,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         enunciado.setRows(5);
         jScrollPane2.setViewportView(enunciado);
 
-        resposta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D" }));
+        r.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "A", "B", "C", "D" }));
 
         MostrarTodos.setText("Mostrar Todos");
         MostrarTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -102,32 +120,34 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
             }
         });
 
-        Salvar.setText("Salvar");
-        Salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalvarActionPerformed(evt);
-            }
-        });
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(listener);
+        btnSalvar.setActionCommand("salvar");
+        caregabanco();
+        limpar();
 
         Atualizar.setText("Atualizar");
-        Atualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtualizarActionPerformed(evt);
-            }
-        });
+        Atualizar.addActionListener(listener);
+        Atualizar.setActionCommand("atualizar");
+        caregabanco();
+        limpar();
 
         Apagar.setText("Apagar");
-        Apagar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ApagarActionPerformed(evt);
-            }
-        });
+        Apagar.addActionListener(listener);
+        Apagar.setActionCommand("excluir");
+        caregabanco();
+        limpar();
 
         jLabel7.setText("Codigo :");
 
         codigo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 codigoFocusLost(evt);
+            }
+        });
+        codigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                codigoKeyTyped(evt);
             }
         });
 
@@ -142,7 +162,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
                         .addGap(10, 10, 10)
                         .addComponent(MostrarTodos)
                         .addGap(18, 18, 18)
-                        .addComponent(Salvar)
+                        .addComponent(btnSalvar)
                         .addGap(18, 18, 18)
                         .addComponent(Atualizar)
                         .addGap(18, 18, 18)
@@ -165,7 +185,7 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
                             .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(c, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(d, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(resposta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10))))
         );
 
@@ -201,11 +221,11 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel6)
-                    .addComponent(resposta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MostrarTodos)
-                    .addComponent(Salvar)
+                    .addComponent(btnSalvar)
                     .addComponent(Atualizar)
                     .addComponent(Apagar))
                 .addGap(25, 25, 25))
@@ -232,13 +252,8 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void atualizarListQuestions() {
-        ListQuestion.setListData(new Vector(QD.getAll()));
-    }
-
     private void limpar() {
-        Q = null;
-        codigo.setText("");
+        q = null;
         enunciado.setText("");
         a.setText("");
         b.setText("");
@@ -252,20 +267,36 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         b.setText(q.getB());
         c.setText(q.getC());
         d.setText(q.getD());
-        resposta.setSelectedItem(q.getResp());
+        r.setSelectedItem(q.getResp());
         return q;
     }
 
-    public Question getQuestions() {
-        Question q = new Question();
-        q.setCodigo(Integer.parseInt(codigo.getText()));
-        q.setEnunciado(enunciado.getText());
-        q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), resposta.getSelectedItem().toString());
+    public Question getQuestion() throws Excecoes {
+
+        Integer last = dao.getLastQuestion();
+        Integer next = last + 1;
+        q.setCodigo(next);
+
+        if (valida.validaArea(enunciado)) {
+            q.setEnunciado(enunciado.getText());
+        } else {
+            throw new Excecoes("Campo Enunciado é obrigatório!");
+        }
+        if (valida.validaVazio(a) && valida.validaVazio(b) && valida.validaVazio(c) && valida.validaVazio(d)) {
+            q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText());
+        } else {
+            throw new Excecoes("Campos de alternativas são Obrigatórios!");
+        }
+        if (r.getSelectedIndex() != 0) {
+            q.setResp(r.getSelectedItem().toString());
+        } else {
+            throw new Excecoes("Campo de Resposta é Obrigatórios!");
+        }
         return q;
     }
 
     public void caregabanco() {
-        List<Question> QList = QD.getAll();
+        List<Question> QList = dao.getAll();
         final Question[] strings = new Question[QList.size()];
         int i = 0;
 
@@ -285,40 +316,9 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
         });
     }
 
-
     private void MostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarTodosActionPerformed
         caregabanco();
     }//GEN-LAST:event_MostrarTodosActionPerformed
-
-    private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
-        Question q = getQuestions();
-        QD.update(q);
-        limpar();
-        caregabanco();
-    }//GEN-LAST:event_AtualizarActionPerformed
-
-    private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
-        boolean novo = false;
-        if (Q == null) {
-            Q = new Question();
-            novo = true;
-        }
-        Q.setCodigo(Integer.parseInt(codigo.getText()));
-        Q.setEnunciado(enunciado.getText());
-        Q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText(), resposta.getSelectedItem().toString());
-
-        if (novo) {
-            try {
-                QD.insert(Q);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(),
-                        "ERRO", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        limpar();
-        atualizarListQuestions();
-        caregabanco();
-    }//GEN-LAST:event_SalvarActionPerformed
 
     private void codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoFocusLost
 
@@ -332,31 +332,31 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
                 return;
             }
 
-            Question q = QD.getQuestion(codigo);
+            Question q = dao.getQuestion(codigo);
             if (q == null) {
                 JOptionPane.showMessageDialog(this, "Questão não encontrada!");
-
+                limpar();
             } else {
                 setQuestions(q);
             }
         }
     }//GEN-LAST:event_codigoFocusLost
 
-    private void ApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarActionPerformed
-        Question Q = getQuestions();
-        QD.delete(Q);
-        limpar();
-        caregabanco();
-    }//GEN-LAST:event_ApagarActionPerformed
+    private void codigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoKeyTyped
+        String numbers = "0123456789";
+        if (!numbers.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_codigoKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Apagar;
     private javax.swing.JButton Atualizar;
     private javax.swing.JList<String> ListQuestion;
     private javax.swing.JButton MostrarTodos;
-    private javax.swing.JButton Salvar;
     private javax.swing.JTextField a;
     private javax.swing.JTextField b;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField c;
     private javax.swing.JTextField codigo;
     private javax.swing.JTextField d;
@@ -372,7 +372,9 @@ public class ConsultaQuestions extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JComboBox<String> resposta;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> r;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -6,12 +6,14 @@ CREATE USER SA PASSWORD ""
 GRANT DBA TO SA
 SET WRITE_DELAY 10
 SET SCHEMA PUBLIC
-INSERT INTO ALUNOS VALUES(0,'ads','[s, a, d]','Masculino','asd','sad','saf','fds','ddfs')
+INSERT INTO ALUNOS VALUES(0,'teste','[t, e, s, t, e]','Feminino','22/22/2222','teste','(22)22222-2222','teste','teste')
 INSERT INTO ALUNOS VALUES(1,'1','[1]','Masculino','12/55/5645','1','1','1','1')
 INSERT INTO ALUNOS VALUES(2,'Danrlei','[1, 2, 4, 5]','Masculino','1995-12-06','dan@manga.com','969696666','Sapolandia','why should i have one?')
-INSERT INTO PROFESSORES VALUES(0,'testando','[0]','Feminino','01/01/0111','16','123','456','564')
+INSERT INTO ALUNOS VALUES(3241,'ATUALIZA','[[, a, ,,  , s, ,,  , d, ,,  , a, ,,  , s, ,,  , d, ]]','Masculino','45/64/5645','teste','(56)46546-5644','teste','teste')
+INSERT INTO PROFESSORES VALUES(0,'SALVAR','[[, [, ,,  , 0, ,,  , ], ]]','Feminino','01/01/0111','16','(  )     -    ','456','564')
 INSERT INTO PROFESSORES VALUES(3,'Leoquina','[2, 1, 4, 5]','Feminino','1200-09-22','leo@hello.com','98657489','Rua da casa dela ','amor')
 INSERT INTO PROFESSORES VALUES(549,'Anderson','[5, 5, 6, 8, 9]','Masculino','1558-06-28','als@gamisl.com','598565656','Rua das Missoes ','Garoto de Programa')
+INSERT INTO PROFESSORES VALUES(564654,'teste','[t, e, s, t, e]','Feminino','12/33/1124','teste','(22)32222-2222','teste','teste')
 INSERT INTO QUESTIONS VALUES(0,'Oi','Halo','Hello','Hallow','Hell','B')
 INSERT INTO QUESTIONS VALUES(1,'Penso','Think','Though','Throught','Thought','A')
 INSERT INTO QUESTIONS VALUES(2,'12','Twenty','Twelve','Fourteen','Eleven','B')

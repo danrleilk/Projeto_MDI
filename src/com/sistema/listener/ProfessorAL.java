@@ -35,9 +35,10 @@ public class ProfessorAL implements ActionListener {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
                 return;
             }
-            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso.");
             frame.dispose();
         }
+
         if ("cancelar".equals(gac)) {
             int resposta = JOptionPane.showConfirmDialog(null, "Você deseja cancelar esta operação?", null, YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {

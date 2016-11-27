@@ -23,6 +23,7 @@ public class AlunoAL implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String gac = e.getActionCommand();
+
         if ("cadastrar".equals(gac)) {
             try {
                 al = frame.getAluno();
@@ -39,6 +40,7 @@ public class AlunoAL implements ActionListener {
             JOptionPane.showMessageDialog(null, "Salvo com sucesso");
             frame.dispose();
         }
+
         if ("cancelar".equals(gac)) {
             int resposta = JOptionPane.showConfirmDialog(null, "Você deseja cancelar esta operação?", null, YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {

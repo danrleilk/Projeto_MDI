@@ -35,7 +35,7 @@ public class CadQuestion extends JInternalFrame {
             throw new Excecoes("Campo Enunciado é obrigatório!");
         }
         if (valida.validaVazio(a) && valida.validaVazio(b) && valida.validaVazio(c) && valida.validaVazio(d)) {
-            q.setOpcoes(a.getText().toString(), b.getText().toString(), c.getText().toString(), d.getText().toString());
+            q.setOpcoes(a.getText(), b.getText(), c.getText(), d.getText());
         } else {
             throw new Excecoes("Campos de alternativas são Obrigatórios!");
         }

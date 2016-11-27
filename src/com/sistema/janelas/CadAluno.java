@@ -3,10 +3,7 @@ package com.sistema.janelas;
 import com.sistema.bean.Aluno;
 import com.sistema.listener.AlunoAL;
 import excecoes.Excecoes;
-import java.text.ParseException;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import validacao.Valida;
 

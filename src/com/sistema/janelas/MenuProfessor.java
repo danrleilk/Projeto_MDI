@@ -257,7 +257,7 @@ public class MenuProfessor extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         this.jDesktopPane1.removeAll();
-        ConsultarProfessor cp = new ConsultarProfessor();
+        ConsultaProfessor cp = new ConsultaProfessor();
         this.jDesktopPane1.add(cp);
         cp.setVisible(true);
 
@@ -270,7 +270,7 @@ public class MenuProfessor extends javax.swing.JFrame {
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         this.jDesktopPane1.removeAll();
-        ConsultaQuestions cq = new ConsultaQuestions();
+        ConsultaQuestion cq = new ConsultaQuestion();
         this.jDesktopPane1.add(cq);
         cq.setVisible(true);
 
